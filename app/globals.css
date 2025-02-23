@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'light';
+    src: url('../public/fonts/Prompt-Light.ttf');
+}
+
+@font-face {
+    font-family: 'regular';
+    src: url('../public/fonts/Prompt-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'medium';
+    src: url('../public/fonts/Prompt-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('../public/fonts/Prompt-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'plight';
+    src: url('../public/fonts/Poppins-Light.ttf');
+}
+
+@font-face {
+    font-family: 'pregular';
+    src: url('../public/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'pmedium';
+    src: url('../public/fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'pbold';
+    src: url('../public/fonts/Poppins-Bold.ttf');
+}
+
+.swal2-popup {
+    /* font-size: 1.6rem !important; */
+    font-family: medium
+  }
