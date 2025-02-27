@@ -8,6 +8,7 @@ import axios from 'axios'
 import { jwtDecode } from "jwt-decode"
 import { UserMethod } from "../methods/UserMethod"
 import { useRouter } from "next/navigation"
+import { state } from "@/config"
 
 const Room = () => {
 
@@ -20,7 +21,7 @@ const Room = () => {
         const user_res = await new UserMethod().getUserAccounts(token)
 
         if (user_res) {
-            const response = await axios.post<string>('http://localhost:3001/api/meetings/join', {
+            const response = await axios.post<string>(state == 'dev' ? 'http://localhost:3001/api/meetings/join' : 'https://outapi.outwittrader.com/api/meetings/join', {
                 meetingID: 'meeting-outwit-room',
                 fullName: user_res.id,
                 avatarURL: user_res.role == 0 ? 'https://api-private.atlassian.com/users/9cea692d0a59c5e100680165cbbeb496/avatar' : 'https://cdn-icons-png.flaticon.com/512/7453/7453640.png',
