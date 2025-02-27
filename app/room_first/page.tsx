@@ -4,8 +4,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
-import { io, Socket } from "socket.io-client"
-import HLS from 'hls.js'
 import axios from 'axios'
 import { jwtDecode } from "jwt-decode"
 import { UserMethod } from "../methods/UserMethod"
@@ -23,14 +21,14 @@ const Room = () => {
 
         if (user_res) {
             const response = await axios.post<string>('http://localhost:3001/api/meetings/join', {
-                meetingID: 'meeting-outwit-room1',
+                meetingID: 'meeting-outwit-room',
                 fullName: user_res.id,
                 avatarURL: user_res.role == 0 ? 'https://api-private.atlassian.com/users/9cea692d0a59c5e100680165cbbeb496/avatar' : 'https://cdn-icons-png.flaticon.com/512/7453/7453640.png',
                 role: user_res.role == 0 ? "viewer" : "moderator"
             });
 
             return response.data
-        }else{
+        } else {
             navigate.push('/')
         }
     };
@@ -53,14 +51,21 @@ const Room = () => {
     }, []);
 
     return (
-        <div className="w-full h-[100vh]">
+        <div className="w-full h-[100vh] p-[30px]">
+
             {joinURL ? <iframe
                 src={joinURL}
                 width="100%"
-                height="100%"
+                height="90%"
                 allow="camera; microphone; fullscreen; display-capture"
                 sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
             ></iframe> : null}
+
+            <div onClick={() => {
+                navigate.push('/signal')
+            }} className='w-[80px] mt-[20px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
+                <p className='font-[medium] text-white'>กลับ</p>
+            </div>
         </div>
     )
 }

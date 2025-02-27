@@ -12,6 +12,9 @@ import dayjs from 'dayjs'
 import relativeTime from "dayjs/plugin/relativeTime";
 import { END_POINT, END_SLIP } from '@/config'
 import { FaCamera } from "react-icons/fa";
+import { useRouter } from 'next/navigation'
+import Back from '../Components/Back'
+import Image from 'next/image'
 
 dayjs.extend(relativeTime)
 
@@ -24,6 +27,8 @@ const RentSignal = () => {
   const [specificProduct, setSpecificProduct] = useState<ProductInterface | null>(null)
   const [slip, setSlip] = useState<any>(null)
   const [refresh, setRefresh] = useState<number>(0)
+
+  const navigate = useRouter()
 
   const ResetPurchase = () => {
     setModal(false)
@@ -117,9 +122,15 @@ const RentSignal = () => {
 
       </div> : null}
 
+
+
       <Header />
-      <div className="w-full bg-white mt-[80px] flex  items-center flex-col">
-        <p className="text-white font-[medium] text-[24px]">ยินดีต้อนรับ! สู่ OutwitTrader</p>
+
+      <Back />
+
+      <div className="w-full bg-white mt-[150px] flex  items-center flex-col">
+        {/* <Back /> */}
+        {/* <p className="text-white font-[medium] text-[24px]">ยินดีต้อนรับ! สู่ OutwitTrader</p> */}
 
         <div className="">
           <div>
@@ -132,7 +143,7 @@ const RentSignal = () => {
                 <div key={item.id} className="flex flex-col gap-[10px]">
                   <div className="w-[300px] h-[300px] bg-white shadow-lg rounded-[8px] p-[10px]">
                     <div className='w-full h-[200px] flex justify-center items-center'>
-                      <img src='./signal.webp' className='w-[200px] h-[170px]'></img>
+                      <Image alt="." width={300} height={200} src="/signal.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                     </div>
                     <div className='w-full justify-center flex'>
                       <p className='font-[light] text-[14px]'>{item.detail}</p>
@@ -153,7 +164,7 @@ const RentSignal = () => {
                     // })
                     setSpecificProduct(item)
                     setModal(true)
-                  }} className="w-full h-[40px] bg-blue-700 flex justify-center items-center rounded-[4px] text-white">
+                  }} className="w-full h-[40px] cursor-pointer bg-blue-700 flex justify-center items-center rounded-[4px] text-white">
                     <p className='font-[medium]'>เช่าสัญญาณ</p>
                   </div>
                 </div>

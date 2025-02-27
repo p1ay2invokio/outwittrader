@@ -51,14 +51,21 @@ const Room = () => {
     }, []);
 
     return (
-        <div className="w-full h-[100vh]">
+        <div className="w-full h-[100vh] p-[30px]">
+
             {joinURL ? <iframe
                 src={joinURL}
                 width="100%"
-                height="100%"
+                height="90%"
                 allow="camera; microphone; fullscreen; display-capture"
                 sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
             ></iframe> : null}
+
+            <div onClick={() => {
+                navigate.push('/signal')
+            }} className='w-[80px] mt-[20px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
+                <p className='font-[medium] text-white'>กลับ</p>
+            </div>
         </div>
     )
 }

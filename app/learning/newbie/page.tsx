@@ -1,5 +1,6 @@
 'use client'
 
+import Back from "@/app/Components/Back"
 import Header from "@/app/Components/Header"
 import { useRouter } from "next/navigation"
 
@@ -9,6 +10,9 @@ const Newbie = () => {
 
     return (
         <div>
+
+            <Back />
+
             <Header />
             <div className="mt-[80px] p-[20px] flex justify-center items-center">
                 <div className="w-[800px] bg-yellow-100 shadow h-[400px] rounded-[8px] grid grid-cols-2 p-[10px] gap-[10px]">

@@ -7,11 +7,14 @@ import { SiIos } from "react-icons/si";
 import { IoLogoAndroid } from "react-icons/io";
 import { RiTimeZoneFill } from "react-icons/ri";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 
 const GuideBook = () => {
 
     const [select, setSelect] = useState<number>(0)
+
+    let navigate = useRouter()
 
     const lessons = [
         {
@@ -49,6 +52,7 @@ const GuideBook = () => {
     return (
         <div className="mb-[80px]">
             <Header />
+
             <div className="mt-[80px] p-[20px]">
 
                 <div className="mb-[10px]">
@@ -83,6 +87,12 @@ const GuideBook = () => {
                             })}
                         </div>
                     </div>
+                </div>
+
+                <div onClick={() => {
+                    navigate.push('/')
+                }} className='w-[80px] mt-[20px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
+                    <p className='font-[medium] text-white'>กลับ</p>
                 </div>
 
             </div>

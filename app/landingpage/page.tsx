@@ -2,9 +2,22 @@
 
 import { useEffect, useRef } from "react"
 import Header from "../Components/Header"
+import { Howl, Howler } from 'howler'
 
 const LandingPage = () => {
 
+    const videoRef = useRef(null)
+
+    // useEffect(() => {
+    //     let sound = new Howl({
+    //         src: './video.mp3',
+    //         // autoplay: true,
+    //         // html5: true
+    //     })
+
+    //     sound.play()
+
+    // }, [])
 
     return (
         <div>
@@ -19,8 +32,8 @@ const LandingPage = () => {
                             <button className="w-[170px] h-[45px] border-[0px] border-white mt-[15px] font-[medium] text-[20px] bg-black text-white rounded-[8px]">เริ่มต้นตอนนี้</button>
                         </div>
                         <div className="w-[560px] h-[315px] max-[600px]:w-[300px]">
-                            <video autoPlay muted>
-                                <source src="/video.mp4" type="video/mp4"></source>
+                            <video ref={videoRef} autoPlay muted={true} loop src="/video.mp4">
+                                {/* <source src="/video.mp4" type="video/mp4"></source> */}
                             </video>
                         </div>
                     </div>

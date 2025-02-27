@@ -97,25 +97,25 @@ const Header = () => {
                                                 </div>
                                             </li>
 
-                                            <li onClick={() => {
+                                            <li className="cursor-pointer" onClick={() => {
                                                 navigate.push("/")
                                                 setMenuOpen(false)
                                             }}>
                                                 <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">แดชบอร์ด</a>
                                             </li>
-                                            <li onClick={() => {
+                                            <li className="cursor-pointer" onClick={() => {
                                                 navigate.push("/signal")
                                                 setMenuOpen(false)
                                             }}>
                                                 <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ห้องสัญญาณ</a>
                                             </li>
-                                            <li onClick={() => {
+                                            <li className="cursor-pointer" onClick={() => {
                                                 navigate.push("/rental")
                                                 setMenuOpen(false)
                                             }}>
                                                 <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ห้องเช่าสัญญาณ</a>
                                             </li>
-                                            <li onClick={() => {
+                                            <li className="cursor-pointer" onClick={() => {
                                                 navigate.push("/setting")
                                                 setMenuOpen(false)
                                             }}>
@@ -125,7 +125,7 @@ const Header = () => {
                                                 navigate.push("/confirm_slip")
                                                 setMenuOpen(false)
                                             }}>
-                                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ยืนยันสลิป</a>
+                                                <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ยืนยันสลิป</a>
                                             </li> : null : null}
                                             <li onClick={() => {
                                                 Swal.fire({ title: "ต้องการออกจากระบบ", showConfirmButton: true, showCancelButton: true, confirmButtonText: 'ออก', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#cb4335', cancelButtonColor: '#e67e22' }).then((res) => {
