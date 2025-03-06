@@ -20,7 +20,6 @@ const Login = () => {
         let token = localStorage.getItem("token")
         if (token) {
             navigate.push("/")
-
         }
 
     }, [])

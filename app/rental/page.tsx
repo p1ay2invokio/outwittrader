@@ -15,6 +15,7 @@ import { FaCamera } from "react-icons/fa";
 import { useRouter } from 'next/navigation'
 import Back from '../Components/Back'
 import Image from 'next/image'
+import { IoArrowBackCircleSharp } from 'react-icons/io5'
 
 dayjs.extend(relativeTime)
 
@@ -77,7 +78,7 @@ const RentSignal = () => {
             <p className='font-[medium]'>{specificProduct.name}</p>
             <p className='font-[light]'>{specificProduct.detail}</p>
             <p className='font-[medium]'>{specificProduct.price} บาท</p>
-            <label className='w-[250px] h-[40px] flex justify-center items-center border-[1px] border-black rounded-[4px] mt-[10px] mb-[10px]' htmlFor='upload-slip'>
+            <label className='w-[250px] h-[40px] flex justify-center items-center cursor-pointer border-[1px] border-black rounded-[4px] mt-[10px] mb-[10px]' htmlFor='upload-slip'>
               {slip ? <p className='w-[120px] whitespace-nowrap overflow-hidden text-ellipsis'>{slip.name}</p> : <div className='text-center'>
                 <p className='font-[medium]'>อัพโหลดสลิป</p>
                 <p className='font-[light] text-[12px]'>ยังไม่ได้อัพโหลดไฟล์</p>
@@ -126,15 +127,20 @@ const RentSignal = () => {
 
       <Header />
 
-      <Back />
 
       <div className="w-full bg-white mt-[150px] flex  items-center flex-col">
         {/* <Back /> */}
         {/* <p className="text-white font-[medium] text-[24px]">ยินดีต้อนรับ! สู่ OutwitTrader</p> */}
 
-        <div className="">
-          <div>
-            <p className="font-[medium] text-[20px]">สินค้า (PRODUCTS)</p>
+        <div>
+          <div className='flex gap-[5px] items-center'>
+            <IoArrowBackCircleSharp onClick={() => {
+              navigate.push("/")
+            }} className="cursor-pointer" size={40}></IoArrowBackCircleSharp>
+            <div>
+              <p className="font-[medium] text-[18px]">สินค้า (PRODUCTS)</p>
+              <p className="font-[light] text-[14px] text-gray-500">หน้าหลัก / ห้องสัญญาณ</p>
+            </div>
           </div>
 
           <div className="grid grid-cols-3 gap-[20px] mt-[20px] max-[1000px]:grid-cols-2 max-[600px]:grid-cols-1">

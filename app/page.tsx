@@ -27,7 +27,7 @@ const Home = () => {
       console.log(decoded)
       setUsername(decoded.username)
     } else {
-      navigate.push("/login")
+      navigate.push("/landingpage")
     }
   }, [])
 
@@ -43,10 +43,10 @@ const Home = () => {
             <p className="font-[medium] text-[20px]">ช่องทางติดตามข่าวสาร</p>
           </div> */}
 
-          <div className="flex justify-center items-center mb-[20px] max-sm:hidden">
+          <div className="flex justify-center items-center mb-[20px]">
             <div className="w-full flex justify-center items-center">
-              <Carousel className="h-[300px] w-full">
-                <Image alt="." width={800} height={300} src="/1.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+              <Carousel className="h-[250px] w-full" >
+                <Image alt="." width={1050} height={250} src="/banner_mindset.webp" className="w-full rounded-[8px]"></Image>
                 <Image alt="." width={800} height={300} src="/2.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                 <Image alt="." width={800} height={300} src="/3.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
               </Carousel>
@@ -54,10 +54,10 @@ const Home = () => {
           </div>
 
 
-          <div className="grid grid-cols-4 gap-[20px] mt-[20px] max-[1024px]:grid-cols-3 max-[600px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-[20px] mt-[20px] place-items-center max-[1024px]:grid-cols-3 max-[700px]:grid-cols-2 max-[600px]:grid-cols-2 max-[600px]:w-[380px] max-[600px]:gap-[5px]">
             <div className="flex flex-col gap-[10px]">
               <p className="font-[light] text-[14px]">เช่าสัญญาณ</p>
-              <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
+              <div className="w-full h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
                 <Image alt="." width={200} height={250} src="/signal.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
               </div>
               <div onClick={() => {
@@ -68,7 +68,7 @@ const Home = () => {
             </div>
             <div className="flex flex-col gap-[10px]">
               <p className="font-[light] text-[14px]">ห้องสัญญาณ</p>
-              <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
+              <div className="w-full h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
                 <Image alt="." width={200} height={250} src="/door.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
               </div>
               <div onClick={() => {
@@ -79,7 +79,7 @@ const Home = () => {
             </div>
             <div className="flex flex-col gap-[10px]">
               <p className="font-[light] text-[14px]">มือใหม่</p>
-              <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
+              <div className="w-full h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
                 <Image alt="." width={200} height={250} src="/news.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
               </div>
               <div onClick={() => {
@@ -90,7 +90,7 @@ const Home = () => {
             </div>
             <div className="flex flex-col gap-[10px]">
               <p className="font-[light] text-[14px]">คู่มือ</p>
-              <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
+              <div className="w-full h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center p-[10px]">
                 <Image alt="." width={200} height={250} src="/newbie.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
               </div>
               <div onClick={() => {
@@ -98,38 +98,40 @@ const Home = () => {
               }} className="w-full h-[40px] bg-blue-700 flex justify-center items-center rounded-[4px] text-white font-[medium] cursor-pointer">
                 <p>คลิกเพื่อดู</p>
               </div>
+
             </div>
           </div>
         </div>
       </div>
 
       <div className="mt-[100px] flex justify-center items-center flex-col">
-        <div>
+        <div className="flex flex-col justify-center items-center">
           <p className="font-[medium] text-[20px]">ช่องทางการติดต่อ</p>
+          <p className="font-[light] text-[12px] text-gray-500">(Contract Us)</p>
         </div>
-        <div className="grid grid-cols-5 gap-[20px] max-[1200px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1 mb-[100px]">
-          <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
+        <div className="grid grid-cols-5 gap-[20px] max-[1200px]:grid-cols-3 max-[800px]:grid-cols-2 max-[700px]:grid-cols-2 mb-[100px] max-[600px]:gap-[5px]">
+          <div className="w-full h-[200px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
             <div className="flex gap-[10px] justify-center items-center mb-[10px]">
               <FaDiscord size={50} />
               <p className="font-[bold]">Discord</p>
             </div>
             <a target='blank' href="https://discord.gg/MVj5YnsMNM" className="font-[light] text-[12px]">https://discord.gg/MVj5YnsMNM</a>
           </div>
-          <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
+          <div className="w-full h-[200px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
             <div className="flex gap-[10px] justify-center items-center mb-[10px]">
               <FaFacebook size={50} />
               <p className="font-[bold]">Facebook</p>
             </div>
             <a target='blank' href="https://www.facebook.com/share/17yQJBhhVs/" className="font-[light] text-[12px] w-[150px] overflow-hidden text-ellipsis">https://www.facebook.com/share/17yQJBhhVs/</a>
           </div>
-          <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
+          <div className="w-full h-[200px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
             <div className="flex gap-[10px] justify-center items-center mb-[10px]">
               <FaTiktok size={50} />
               <p className="font-[bold]">Tiktok</p>
             </div>
             <a target='blank' href="https://www.tiktok.com/@outwittrader?_t=ZS-8u1IHEygb6G&_r=1" className="font-[light] text-[12px] w-[150px] overflow-hidden text-ellipsis">https://www.tiktok.com/@outwittrader</a>
           </div>
-          <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
+          <div className="w-full h-[200px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
             <div className="flex gap-[10px] justify-center items-center mb-[10px]">
               <FaYoutube size={50} />
               <p className="font-[bold]">Youtube</p>
@@ -137,7 +139,7 @@ const Home = () => {
             <a target='blank' href="https://www.youtube.com/@OutwitTrade" className="font-[light] text-[12px] w-[150px] overflow-hidden text-ellipsis">https://www.youtube.com/@OutwitTrade</a>
           </div>
 
-          <div className="w-[200px] h-[250px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
+          <div className="w-full h-[200px] bg-white shadow-lg rounded-[8px] flex flex-col justify-center items-center">
             <div className="flex gap-[10px] justify-center items-center mb-[10px]">
               <FaLine size={50} />
               <p className="font-[bold]">Line OA</p>

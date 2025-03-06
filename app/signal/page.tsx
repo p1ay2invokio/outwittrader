@@ -9,6 +9,7 @@ import { UserInterface } from "../Interfaces/UserInterface";
 import Swal from "sweetalert2";
 import Back from "../Components/Back";
 import Image from "next/image";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 const Signal = () => {
 
@@ -36,28 +37,29 @@ const Signal = () => {
     return (
         <div>
 
-            <div onClick={() => {
-                navigate.push('/')
-            }} className='w-[80px] absolute left-[100px] top-[190px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
-                <p className='font-[medium] text-white'>กลับ</p>
-            </div>
+
 
             <Header />
 
-            <div className="h-[calc(100vh-80px)] pl-[80px] pr-[80px] pt-[20px] mt-[80px]">
+            <div className="h-[calc(100vh-80px)] pl-[80px] pr-[80px] max-[600px]:pl-[20px] max-[600px]:pr-[20px] pt-[20px] mt-[80px]">
                 <div className="w-full">
-                    <div className="mb-[20px] mt-[20px] ml-[20px]">
-                        <p className="flex font-[medium] text-[20px]">ห้องสัญญาณ & Trader</p>
-                        <p className="font-[light]">หน้าหลัก / ห้องสัญญาณ</p>
+                    <div className="flex items-center gap-[10px]">
+                        <IoArrowBackCircleSharp onClick={() => {
+                            navigate.push("/")
+                        }} className="cursor-pointer" size={40}></IoArrowBackCircleSharp>
+                        <div className="mb-[20px] mt-[20px]">
+                            <p className="flex font-[medium] text-[18px] max-[600px]:text-[16px]">ห้องสัญญาณ & Trader</p>
+                            <p className="font-[light] text-[14px] max-[600px]:text-[12px] text-gray-500">หน้าหลัก / ห้องสัญญาณ</p>
+                        </div>
                     </div>
 
                     <div className="w-full flex justify-center">
 
 
-                        <div className="grid grid-cols-4 w-[1400px] place-items-center max-[1300px]:grid-cols-2 max-[800px]:grid-cols-1 gap-y-5 ">
+                        <div className="grid grid-cols-4 w-[1400px] place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px]">
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 1 นาที</p>
-                                <div className="w-[300px] h-[200px] shadow-lg rounded-[8px]">
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/1m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                                 </div>
                                 <div onClick={async () => {
@@ -72,8 +74,8 @@ const Signal = () => {
                                             })
                                         }
                                     }
-                                }} className="w-[100px] h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center mt-[10px]">
-                                    <p className="font-[medium] text-white text-[14px] cursor-pointer">เข้าดูสัญญาณ</p>
+                                }} className="w-full h-[40px] bg-blue-700 rounded-[4px] cursor-pointer flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
                             <div onClick={async () => {
@@ -90,33 +92,33 @@ const Signal = () => {
                                 }
                             }} className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 5 นาที</p>
-                                <div className="w-[300px] h-[200px] shadow-lg rounded-[8px]">
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                                 </div>
-                                <div className="w-[100px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center mt-[10px]">
-                                    <p className="font-[medium] text-white text-[14px]">เข้าดูสัญญาณ</p>
+                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">ข่าวประจำวัน</p>
-                                <div className="w-[300px] h-[200px] shadow-lg rounded-[8px]">
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/newsja.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                                 </div>
                                 <div onClick={() => {
                                     navigate.push("/news/time")
-                                }} className="w-[100px] h-[40px] bg-blue-600 rounded-[8px] cursor-pointer flex justify-center items-center mt-[10px]">
-                                    <p className="font-[medium] text-white text-[14px]">เข้าดูคอร์สข่าว</p>
+                                }} className="w-full h-[40px] bg-blue-700 rounded-[4px] cursor-pointer flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูคอร์สข่าว</p>
                                 </div>
                             </div>
                             <div className="w-full flex flex-col items-center">
-                                <p className="font-[light] text-[14px]">คอร์สการเรียนรู้พื้นฐาน & เทคนิค</p>
-                                <div className="w-[300px] h-[200px] shadow-lg rounded-[8px]">
+                                <p className="font-[light] text-[14px] max-[600px]:w-[150px] overflow-hidden text-nowrap text-ellipsis">คอร์สการเรียนรู้พื้นฐาน & เทคนิค</p>
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/sudteb.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                                 </div>
                                 <div onClick={() => {
                                     navigate.push('/learning/guidebook')
-                                }} className="w-[90px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center mt-[10px]">
-                                    <p className="font-[medium] text-white text-[14px]">เข้าดูคอร์ส</p>
+                                }} className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูคอร์ส</p>
                                 </div>
                             </div>
                         </div>

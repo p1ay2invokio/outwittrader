@@ -45,4 +45,16 @@
 .swal2-popup {
     /* font-size: 1.6rem !important; */
     font-family: medium
-  }
+}
+
+
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+body, html{
+    user-select: none;
+}

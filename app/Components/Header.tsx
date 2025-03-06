@@ -41,13 +41,13 @@ const Header = () => {
 
     return (
         <div>
-            <div className="w-full h-[80px] bg-[#0e1111]  flex items-center p-[20px] justify-between fixed top-0 left-0 z-[6]">
+            <div className="w-full h-[60px] bg-[#0e1111]  flex items-center p-[20px] justify-between fixed top-0 left-0 z-[6]">
                 <div onClick={() => {
                     navigate.push("/")
                 }} className="flex justify-center items-center gap-[10px] cursor-pointer">
-                    <img className="w-[50px]" src="/images/logo.webp"></img>
+                    <img className="w-[40px]" src="/images/logo.webp"></img>
                     <div className="space-y-[-5px]">
-                        <p className="text-white font-[pbold] text-[24px] max-[600px]:text-[16px]">OutwitTrader</p>
+                        <p className="text-white font-[pbold] text-[20px] max-[600px]:text-[16px]">OutwitTrader</p>
                         <p className="text-white font-[light] text-[10px]">ผู้ให้บริการปล่อยเช่าสัญญาน</p>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ const Header = () => {
                                                 navigate.push("/confirm_slip")
                                                 setMenuOpen(false)
                                             }}>
-                                                <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ยืนยันสลิป</a>
+                                                <a className="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ยืนยันสลิป</a>
                                             </li> : null : null}
                                             <li onClick={() => {
                                                 Swal.fire({ title: "ต้องการออกจากระบบ", showConfirmButton: true, showCancelButton: true, confirmButtonText: 'ออก', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#cb4335', cancelButtonColor: '#e67e22' }).then((res) => {

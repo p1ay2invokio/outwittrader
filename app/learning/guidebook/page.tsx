@@ -61,7 +61,7 @@ const GuideBook = () => {
                 <div className="grid grid-cols-3 place-items-start gap-[10px] max-[800px]:grid-cols-1 gap-y-[20px]">
                     <div className="col-span-2 w-full rounded-[8px] shadow-md  h-[600px] p-[20px]">
                         <p className="font-[light] text-black mb-[10px]">วิธีการใช้งานเช่าสัญญาณ</p>
-                        <iframe width="100%" height="80%" src={`https://www.youtube.com/embed/${lessons[select].embed}?si=l8GJnqT24XunRhkZ&amp;controls=0`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                        <iframe loading="lazy" width="100%" height="80%" src={`https://www.youtube.com/embed/${lessons[select].embed}?si=l8GJnqT24XunRhkZ&amp;controls=0`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                         <p className="font-[light] text-[14px] mt-[10px]">รายละเอียด ในบทนี้จะอธิบายขั้นตอนการเช่าสัญญาณ AI เพื่อเริ่มต้นการเทรดอย่างมีประสิทธิภาพ พร้อมข้อมูลเกี่ยวกับการบริการเช่าสัญญาณต่างๆ ที่สามารถเลือกใช้ได้ตามต้องการ</p>
                     </div>
                     <div className="col-span-1 w-full h-[500px] shadow-md rounded-[8px] p-[20px]">
