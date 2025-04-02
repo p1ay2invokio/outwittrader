@@ -51,4 +51,45 @@ export class UserMethod {
             })
         })
     }
+
+
+    public updatePartner = async (formData: any): Promise<{ updated: number }> => {
+        return new Promise((resolve) => {
+
+            const token = localStorage.getItem("token")
+
+            console.log("TOKEN : ", token)
+
+            if (token) {
+                axios.patch(`${END_POINT}/update_partner`, formData, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "multipart/form-data"
+                    }
+                }).then((res) => {
+                    resolve(res.data)
+                })
+            }
+        })
+    }
+
+    public getUserId = async (id: number): Promise<UserInterface[]> => {
+        return new Promise((resolve) => {
+            axios.get(`${END_POINT}/user/${id}`).then((res) => {
+                resolve(res.data)
+                console.log(res.data)
+            })
+        })
+    }
+
+    public updateDays = (days: number, user_id: number): Promise<{ success: boolean }> => {
+        return new Promise((resolve) => {
+            axios.patch(`${END_POINT}/update_days`, {
+                days: days,
+                user_id: user_id
+            }).then((res) => {
+                resolve(res.data)
+            })
+        })
+    }
 }

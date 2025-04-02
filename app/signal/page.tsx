@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import Back from "../Components/Back";
 import Image from "next/image";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
+import LeftSide from "../Components/LeftSide";
 
 const Signal = () => {
 
@@ -37,12 +38,13 @@ const Signal = () => {
     return (
         <div>
 
+            <LeftSide />
 
 
             <Header />
 
             <div className="h-[calc(100vh-80px)] pl-[80px] pr-[80px] max-[600px]:pl-[20px] max-[600px]:pr-[20px] pt-[20px] mt-[80px]">
-                <div className="w-full">
+                <div className="w-full pl-[200px]">
                     <div className="flex items-center gap-[10px]">
                         <IoArrowBackCircleSharp onClick={() => {
                             navigate.push("/")
@@ -99,7 +101,28 @@ const Signal = () => {
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
+
+
                             <div className="w-full flex flex-col items-center">
+                                <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ 5 นาที</p>
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
+                                    <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                </div>
+                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
+                                </div>
+                            </div>
+
+                            <div className="w-full flex flex-col items-center">
+                                <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ 5 นาที</p>
+                                <div className="w-full h-[200px] shadow-lg rounded-[8px]">
+                                    <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                </div>
+                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                    <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
+                                </div>
+                            </div>
+                            {/* <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">ข่าวประจำวัน</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/newsja.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
@@ -120,7 +143,7 @@ const Signal = () => {
                                 }} className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูคอร์ส</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import Header from "../Components/Header"
 const Topup = () => {
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className="h-[calc(100vh-80px)] mt-[80px] flex justify-center items-center flex-col">
                 <img className="w-[300px] rounded-[8px]" src="./qr.webp"></img>
 

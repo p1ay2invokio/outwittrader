@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^15.2.4",
     "@types/howler": "^2.2.12",
     "@types/pako": "^2.0.3",
     "@types/video.js": "^7.3.58",

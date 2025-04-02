@@ -26,7 +26,7 @@ const ConfirmSlip = () => {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
 
             <div className="grid grid-cols-6 place-items-center mt-[100px] gap-y-[20px] max-[600px]:grid-cols-1 max-[768px]:grid-cols-3 max-[1024px]:grid-cols-4">
                 {orders && orders.length > 0 ? orders.map((item => {

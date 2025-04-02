@@ -3,7 +3,7 @@
 import Back from "@/app/Components/Back"
 import Header from "@/app/Components/Header"
 import { useRouter } from "next/navigation"
-import {IoArrowBackCircleSharp} from 'react-icons/io5'
+import { IoArrowBackCircleSharp } from 'react-icons/io5'
 
 const Newbie = () => {
 
@@ -13,9 +13,9 @@ const Newbie = () => {
         <div>
 
             {/* <Back /> */}
-            <IoArrowBackCircleSharp onClick={() => {
+            {/* <IoArrowBackCircleSharp onClick={() => {
                 navigate.push("/")
-            }} className="cursor-pointer absolute top-20 left-10" size={40}></IoArrowBackCircleSharp>
+            }} className="cursor-pointer absolute top-20 left-10" size={40}></IoArrowBackCircleSharp> */}
 
             <Header />
             <div className="mt-[80px] p-[20px] flex justify-center items-center">

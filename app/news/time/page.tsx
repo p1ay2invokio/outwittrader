@@ -9,6 +9,8 @@ import dayjs from "dayjs"
 import { IoArrowBackCircleSharp } from "react-icons/io5"
 import { MdAccessTimeFilled } from "react-icons/md";
 import { GiFactory } from "react-icons/gi";
+import LeftSide from "@/app/Components/LeftSide"
+import Header from "@/app/Components/Header"
 
 const Time = () => {
 
@@ -29,7 +31,12 @@ const Time = () => {
 
 
     return (
-        <div className="p-[20px]">
+        <div className="p-[20px] pl-[220px]">
+
+            <Header />
+
+            <LeftSide />
+
             <IoArrowBackCircleSharp onClick={() => {
                 navigate.push("/signal")
             }} className="cursor-pointer absolute top-5 left-10" size={40}></IoArrowBackCircleSharp>
@@ -50,7 +57,7 @@ const Time = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* <div onClick={() => {
                 navigate.push('/signal')
             }} className='w-[80px] absolute left-[100px] top-[50px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>

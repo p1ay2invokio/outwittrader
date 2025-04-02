@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { MailMethod } from "../methods/MailMethods"
 import Swal from "sweetalert2"
+import Header from "../Components/Header"
 
 const Forgot = () => {
 
@@ -12,6 +13,7 @@ const Forgot = () => {
 
     return (
         <div className="w-full h-[100vh] flex justify-center items-center">
+            {/* <Header/> */}
             <div className="w-[400px] h-[200px] shadow-md rounded-[8px] pl-[20px] pr-[20px] flex items-center flex-col justify-center max-[600px]:w-[300px]">
                 <p className="font-[medium]">กู้คืนรหัสผ่าน</p>
                 <div className="w-full mt-[20px]">

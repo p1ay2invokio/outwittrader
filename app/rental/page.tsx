@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation'
 import Back from '../Components/Back'
 import Image from 'next/image'
 import { IoArrowBackCircleSharp } from 'react-icons/io5'
+import LeftSide from '../Components/LeftSide'
 
 dayjs.extend(relativeTime)
 
@@ -55,6 +56,10 @@ const RentSignal = () => {
   return (
     <div>
 
+      <Header/>
+
+      <LeftSide />
+
       {modal ? <div onClick={(e) => {
         if (e.target == e.currentTarget) {
           setModal(false)
@@ -72,7 +77,7 @@ const RentSignal = () => {
             }} className="w-[100px] h-[35px] shadow-lg bg-orange-600 rounded-[4px] text-white mt-[10px] font-[medium]">ยกเลิก</button>
           </div>
         </div> : <div className="w-[500px] h-[650px] bg-white shadow rounded-[8px] p-[20px] flex justify-center items-center flex-col max-[600px]:w-[350px]">
-          <img src='./kshop.webp' className='w-[250px] rounded-[8px] shadowf-lg mb-[5px]'></img>
+          <img src={specificProduct?.img} className='w-[250px] rounded-[8px] shadowf-lg mb-[5px]'></img>
           <hr className='border-[1px] w-full border-black/20 mb-[20px] mt-[20px]' />
           {specificProduct ? <div className='w-full flex justify-center flex-col items-center text-[14px]'>
             <p className='font-[medium]'>{specificProduct.name}</p>
@@ -125,8 +130,6 @@ const RentSignal = () => {
 
 
 
-      <Header />
-
 
       <div className="w-full bg-white mt-[150px] flex  items-center flex-col">
         {/* <Back /> */}
@@ -143,11 +146,12 @@ const RentSignal = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-[20px] mt-[20px] max-[1000px]:grid-cols-2 max-[600px]:grid-cols-1">
+          <div className="grid grid-cols-3 gap-[20px] mt-[20px] max-[1400px]:grid-cols-2 max-[1080px]:grid-cols-1">
             {products && products.length > 0 ? products.map((item) => {
               return (
                 <div key={item.id} className="flex flex-col gap-[10px]">
-                  <div className="w-[300px] h-[300px] bg-white shadow-lg rounded-[8px] p-[10px]">
+                  <div className="w-[300px] h-[300px] bg-white shadow-lg rounded-[8px] p-[10px] relative">
+                    {item.special ? <p className='p-[5px] bg-yellow-300 absolute right-0 top-0 text-white rounded-l-[8px] font-[medium]'>พิเศษ</p> : null}
                     <div className='w-full h-[200px] flex justify-center items-center'>
                       <Image alt="." width={300} height={200} src="/signal.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                     </div>
@@ -181,8 +185,8 @@ const RentSignal = () => {
         </div>
 
 
-        <table className='w-[800px] mt-[50px] mb-[100px] max-lg:w-[300px]'>
-          <thead className='border-b-[1px] border-black font-[medium] text-center max-lg:text-[12px]'>
+        <table className='w-[800px] mt-[50px] mb-[100px] max-lg:w-[300px] max-[1400px]:w-[400px]'>
+          <thead className='border-b-[1px] border-black font-[medium] text-[14px] text-center max-lg:text-[12px]'>
             <tr>
               <td>Order ID</td>
               {/* <td>ผู้สั่งซื้อ</td> */}
@@ -194,7 +198,7 @@ const RentSignal = () => {
 
             </tr>
           </thead>
-          <tbody className='font-[light] text-center max-lg:text-[12px]'>
+          <tbody className='font-[light] text-[14px] text-center max-lg:text-[12px]'>
             {orders && orders.length > 0 ? orders.map((item) => {
               let status = Number(item.status)
               return (
@@ -203,12 +207,12 @@ const RentSignal = () => {
                   {/* <td>{item.username}</td> */}
                   <td>{item.product_name}</td>
                   <td>
-                    <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).format('DD/MM/YYYY hh:mm:ss')}</p>
+                    <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).format('DD/MM/YYYY')}</p>
                     {/* <p className='text-[10px]'>{dayjs(Number(item.timestamp)).fromNow()}</p> */}
 
                   </td>
                   <td>
-                    <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).add(30, 'day').format('DD/MM/YYYY hh:mm:ss')}</p>
+                    <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).add(30, 'day').format('DD/MM/YYYY')}</p>
                     {/* <p className='text-[12px]'>{dayjs(Number(item.timestamp)).format('DD/MM/YYYY')}</p> */}
                   </td>
                   <td className='max-lg:hidden'><a href={`${END_SLIP}/${item.slip}`} className='text-[12px] text-blue-500'>{item.slip}</a></td>
