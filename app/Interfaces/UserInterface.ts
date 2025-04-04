@@ -18,6 +18,5 @@ export interface UserInterface {
     face_img: string,
     bank_img: string,
     thai_id_img: string,
-    team_name: string,
-    status_approve: number
+    team_id: number,
 }

@@ -3,7 +3,9 @@
 import Header from "@/app/Components/Header"
 import LeftSide from "@/app/Components/LeftSide"
 import { UserInterface } from "@/app/Interfaces/UserInterface"
+import { TeamInterface, TeamMethod } from "@/app/methods/TeamMethod"
 import { UserMethod } from "@/app/methods/UserMethod"
+import { END_POINT } from "@/config"
 import { useEffect, useState } from "react"
 import Swal from "sweetalert2"
 
@@ -14,6 +16,11 @@ const AdminDashboard = () => {
     const [searchUser, setSearchUser] = useState<string>('')
     const [user, setUser] = useState<UserInterface[] | null>(null)
     const [days, setDays] = useState<string>('')
+
+    const [modalPartner, setModalPartner] = useState<boolean>(false)
+    const [partners, setPartners] = useState<TeamInterface[]>([])
+
+    const [brokerLink, setBrokerLink] = useState<string>('')
 
     const updateDays = async () => {
         await new UserMethod().updateDays(Number(days), Number(searchUser)).then((res) => {
@@ -26,16 +33,79 @@ const AdminDashboard = () => {
         })
     }
 
+    const getRegisterPartner = async () => {
+        const data = await new TeamMethod().allRegisterPartner()
 
-    // useEffect(()=>{
+        console.log(data)
 
+        setPartners(data)
+    }
+
+
+    console.log(END_POINT.split('/api')[0])
+
+    // useEffect(() => {
+    //     getRegisterPartner()
     // }, [])
 
     return (
         <div className="pl-[280px] pt-[100px] pr-[50px]">
 
-            {modal ? <div onClick={(e)=>{
-                if(e.target == e.currentTarget){
+
+            {modalPartner ? <div onClick={(e) => {
+                if (e.target == e.currentTarget) {
+                    setModal(false)
+                }
+            }} className="w-full h-full fixed top-0 left-0 bg-black/50 z-[7] flex justify-center items-center flex-col gap-[20px]">
+                <div className="w-[80%] h-[90vh] bg-white shadow-sm rounded-[4px] grid grid-cols-4 gap-[20px] p-[20px] overflow-scroll">
+                    {partners && partners.length > 0 ? partners.map((item) => {
+                        return (
+                            <div className="w-full border-[1px] shadow-sm border-b-[3px] border-b-blue-600 rounded-[4px] p-[10px] text-[14px]">
+
+                                <div className="flex gap-[5px] text-[16px]">
+                                    <p className="font-[medium]">ชื่อทีม :</p>
+                                    <p className="font-[medium]"> {item.team_name}</p>
+                                </div>
+
+                                <p className="font-[light]">คุณ : {item.username}</p>
+                                <p className="font-[light]">ชื่อ-นามสกุล : {item.name} {item.surname}</p>
+                                <p className="font-[light]">เลขบัตรประชาชน : {item.thai_id}</p>
+                                <p className="font-[light]">เพศ : {item.gender}</p>
+                                <p className="font-[light]">อายุ : {item.age}</p>
+                                <p className="font-[light]">วันเดือนปีเกิด : {item.bod}</p>
+                                <p className="font-[light]">เงินเดือน : {item.salary} บาท/ปี</p>
+                                <p className="font-[light]">อาชีพ : {item.job}</p>
+
+                                <div className="flex flex-col mt-[10px] gap-[5px]">
+                                    <p className="font-[medium]">หลักฐาน</p>
+                                    <a className="font-[light] text-blue-400" href={`${END_POINT.split('/api')[0]}${item.bank_img}`}>- รูปหน้าสมุดบัญชีธนาคาร</a>
+                                    <a className="font-[light] text-blue-400" href={`${END_POINT.split('/api')[0]}${item.thai_id_img}`}>- รูปบัตรประชาชน</a>
+                                    <a className="font-[light] text-blue-400" href={`${END_POINT.split('/api')[0]}${item.face_img}`}>- รูปหน้า</a>
+                                </div>
+
+                                <input onChange={(e) => {
+                                    setBrokerLink(e.target.value)
+                                }} className="w-full h-[40px] rounded-[4px] text-center font-[light] outline-none border-b-[2px]" placeholder="ใส่ลิ้งโบรกเกอร์ที่ (Generate)"></input>
+
+                                <button onClick={async()=>{
+                                    if(brokerLink){
+                                        await new TeamMethod().verifyTeamPartner(item.team_id, brokerLink).then((res)=>{
+                                            if(res.verified){
+                                                Swal.fire(`Verified ${item.team_name} สำเร็จ`, "", "success")
+                                            }
+                                        })
+                                    }else{
+                                        Swal.fire("กรุณาใส่ลิ้งโบรกเกอร์ก่อน", "", "error")
+                                    }
+                                }} className="w-full h-[40px] bg-green-600 rounded-[4px] mt-[5px] text-white font-[medium]">Verify</button>
+                            </div>
+                        )
+                    }) : null}
+                </div>
+            </div> : null}
+
+            {modal ? <div onClick={(e) => {
+                if (e.target == e.currentTarget) {
                     setModal(false)
                 }
             }} className="w-full h-full fixed top-0 left-0 bg-black/50 z-[7] flex justify-center items-center flex-col gap-[20px]">
@@ -47,7 +117,7 @@ const AdminDashboard = () => {
                             if (targetUser && targetUser.length > 0) {
                                 setDays(targetUser[0].total_days.toString())
                                 setUser(targetUser)
-                            }else{
+                            } else {
                                 Swal.fire("ไม่พบไอดี", "", "error")
                             }
                             // console.log(targetUser)
@@ -89,7 +159,8 @@ const AdminDashboard = () => {
 
                 </button>
                 <button onClick={() => {
-
+                    getRegisterPartner()
+                    setModalPartner(true)
                 }} className="p-[10px] h-[40px] bg-white rounded-[4px] shadow-md border-l-[10px] border-blue-800">
                     <p className="font-[medium]">Partner Checking</p>
 

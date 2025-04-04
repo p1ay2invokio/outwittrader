@@ -32,7 +32,9 @@ const Register = () => {
         let token = localStorage.getItem('token')
         let user: UserInterface | null = token ? await new UserMethod().getUserAccounts(token) : null
 
-        if (user?.status_approve == 1) {
+        console.log(user)
+
+        if (user?.team_id) {
             navigate.push('/partner')
         }
 
@@ -47,7 +49,7 @@ const Register = () => {
             setSalary(String(user.salary))
             setBankAccount(user.bank_account)
             setBankName(user.bank_name)
-            setTeamName(user.team_name)
+            // setTeamName(user.team_name)
             setFace(user.face_img)
             setThai_id_img(user.thai_id_img)
             setBankImg(user.bank_img)
