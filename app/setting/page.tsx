@@ -21,6 +21,8 @@ const Setting = () => {
         if (token) {
             const response_user = await new UserMethod().getUserAccounts(token)
 
+            console.log(response_user)
+
             setUser([response_user])
         }
     }
@@ -54,6 +56,11 @@ const Setting = () => {
                             <div className="font-[light] flex justify-between">
                                 <p className="text-[14px]">วันที่ใช้งานได้อีก (Available)</p>
                                 <p className="font-[medium]">{User[0].total_days} วัน</p>
+                            </div>
+
+                            <div className="font-[light] flex justify-between">
+                                <p className="text-[14px]">ผู้ชวน (Inviter)</p>
+                                <p className="font-[medium]">{User[0].referral_id}</p>
                             </div>
                         </div> : null}
                     </div>

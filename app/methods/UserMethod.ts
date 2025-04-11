@@ -22,7 +22,22 @@ export class UserMethod {
                 username: username,
                 password: password,
                 email: email,
-                phone_number: phone_number
+                phone_number: phone_number,
+            }).then((res) => {
+                resolve(res.data)
+            })
+        })
+    }
+
+    public registerRef = (username: string, password: string, email: string, phone_number: string, referral: number): Promise<{ register_success: boolean, token: string }> => {
+        return new Promise((resolve) => {
+            console.log("REF : ", referral)
+            axios.post(`${END_POINT}/register_ref`, {
+                username: username,
+                password: password,
+                email: email,
+                phone_number: phone_number,
+                referral: referral
             }).then((res) => {
                 resolve(res.data)
             })

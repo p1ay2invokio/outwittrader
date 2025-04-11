@@ -19,10 +19,12 @@ const Register = () => {
     const [email, setEmail] = useState<string>('')
     const [phoneNumber, setPhoneNumber] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
+    const [referral, setReferral] = useState<number>(0)
 
     useEffect(() => {
 
         const token = localStorage.getItem("token")
+        setReferral(Number(params.id))
 
         if (token) {
             navigate.push("/")
@@ -35,7 +37,7 @@ const Register = () => {
                 setLoading(true)
                 toast.promise(() => {
                     return new Promise<void>((resolve) => {
-                        setTimeout(async () => {
+                        setTimeout(async () => {    
                             resolve()
                         }, 1000)
                     })
@@ -43,7 +45,7 @@ const Register = () => {
 
 
                 setTimeout(async () => {
-                    let response = await new UserMethod().register(username, password, email, phoneNumber)
+                    let response = await new UserMethod().registerRef(username, password, email, phoneNumber, referral)
                     localStorage.setItem('token', response.token)
                     setLoading(false)
                     navigate.push('/')
@@ -103,13 +105,11 @@ const Register = () => {
                             }
                         }} placeholder="เบอร์โทรศัพท์" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
-                        <input onChange={(e) => {
-                            setPhoneNumber(e.target.value)
-                        }} onKeyUp={(e) => {
+                        <input onKeyUp={(e) => {
                             if (e.key == 'Enter') {
                                 RegisterFunction()
                             }
-                        }} placeholder="Refferal ID" value={params.id} className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
+                        }} placeholder="Refferal ID" readOnly={true} value={params.id} className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
                         <div className="flex gap-[10px] items-center mt-[10px]">
                             <input type="radio" id="agree" name="agree" className="hidden peer"></input>

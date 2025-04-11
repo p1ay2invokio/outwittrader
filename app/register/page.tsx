@@ -103,13 +103,13 @@ const Register = () => {
                             }
                         }} placeholder="เบอร์โทรศัพท์" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
-                        <input onChange={(e) => {
+                        {/* <input onChange={(e) => {
                             setReferral(e.target.value)
                         }} onKeyUp={(e) => {
                             if (e.key == 'Enter') {
                                 RegisterFunction()
                             }
-                        }} placeholder="Referral ID" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
+                        }} placeholder="Referral ID" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input> */}
 
                         <div className="flex gap-[10px] items-center mt-[10px]">
                             <input type="radio" id="agree" name="agree" className="hidden peer"></input>

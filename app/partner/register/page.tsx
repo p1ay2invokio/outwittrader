@@ -27,6 +27,10 @@ const Register = () => {
     const [thai_id_img, setThai_id_img] = useState<File | Blob | null | string>(null)
     const [bankImg, setBankImg] = useState<File | Blob | null | string>(null)
 
+    // const [gender, setGender] 
+
+    // console.log(gender)
+
 
     const intial = async () => {
         let token = localStorage.getItem('token')
@@ -96,9 +100,16 @@ const Register = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label>เพศ</label>
-                                    <input value={gender} onChange={(e) => {
+                                    <select value={gender} onChange={(e) => {
                                         setGender(e.target.value)
-                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
+                                    }} name="gender">
+                                        <option value={"male"} id="male">ชาย</option>
+                                        <option value={"female"} id="female">หญิง</option>
+                                        <option value={"non"} id="non">ไม่ระบุเพศ</option>
+                                    </select>
+                                    {/* <input type="" value={gender} onChange={(e) => {
+                                        setGender(e.target.value)
+                                    }} className="border-b-[1px] outline-none p-[5px]"></input> */}
                                 </div>
                             </div>
 
@@ -131,9 +142,13 @@ const Register = () => {
                             </div>
                             <div className="flex flex-col">
                                 <label>ธนาคาร</label>
-                                <input value={bank_name} onChange={(e) => {
+                                <select value={bank_name} onChange={(e) => {
                                     setBankName(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                                }} name="gender">
+                                    <option value={"kbank"} id="male">กสิกร</option>
+                                    <option value={"scb"} id="female">ไทยพาณิชย์</option>
+                                    <option value={"memo"} id="non">ธนาคารออมสิน</option>
+                                </select>
                             </div>
 
                             <div className="flex flex-col">
@@ -215,7 +230,7 @@ const Register = () => {
 
                                 let response = await new UserMethod().updatePartner(formData)
 
-                                if (response.updated){
+                                if (response.updated) {
                                     Swal.fire("สมัครเป็นพาร์ทเนอร์เสร็จสิ้น", "รอดำเนินการ 7-14 วัน", "success")
                                     navigate.push("/partner")
                                 }

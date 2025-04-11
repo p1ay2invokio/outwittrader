@@ -108,12 +108,12 @@ const LeftSide = () => {
                     <IoSettingsSharp size={20} className="text-white"></IoSettingsSharp>
                     <p className="text-white font-[medium]">ตั้งค่า</p>
                 </div>
-                <div onClick={() => {
+                {User ? User.role == 2 ? <div onClick={() => {
                     navigate.push("/admin/dashboard")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
                     <IoAdd size={20} className="text-white"></IoAdd>
                     <p className="text-white font-[medium]">แอดมิน</p>
-                </div>
+                </div> : null : null}
                 <div onClick={() => {
                     Swal.fire({ title: "ต้องการออกจากระบบ", showConfirmButton: true, showCancelButton: true, confirmButtonText: 'ออก', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#cb4335', cancelButtonColor: '#e67e22' }).then((res) => {
                         if (res.isConfirmed) {
