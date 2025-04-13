@@ -107,9 +107,9 @@ const Dashboard = () => {
                     {account && account.length > 0 ? <div className="border shadow-sm rounded-[4px] w-full h-full p-[10px]">
                         <p className="font-[medium] text-[14px]">ลิงค์เว็บไซต์สำหรับการลงทะเบียน</p>
                         <div className="flex gap-[5px] items-center">
-                            <p className="font-[light] text-[14px] text-black">{`https://outwittrader/register/${account[0].owner_id}`}</p>
+                            <p className="font-[light] text-[14px] text-black">{`https://outwittrader.com/register/${account[0].owner_id}`}</p>
                             <button onClick={() => {
-                                navigator.clipboard.writeText(`https://outwittrader/register/${account[0].owner_id}`);
+                                navigator.clipboard.writeText(`https://outwittrader.com/register/${account[0].owner_id}`);
                             }} className="font-[light] text-[12px] p-[5px] border-[1px] rounded-[8px]">Copy</button>
                         </div>
 
