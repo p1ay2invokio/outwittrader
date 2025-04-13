@@ -68,4 +68,16 @@ export class OrderMethod {
             })
         })
     }
+
+    public getOrderPartnerBuy = (token: string): Promise<any> => {
+        return new Promise((resolve) => {
+            axios.get(`${END_POINT}/order_partner_buy`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then((res) => {
+                resolve(res.data)
+            })
+        })
+    }
 }

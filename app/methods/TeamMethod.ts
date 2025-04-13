@@ -29,7 +29,10 @@ export interface PartnerInterface {
     broker_link: string,
     total_days: number,
     members: number,
-    total_money: number
+    total_money: number,
+    broker_money: number,
+    bank_account: string,
+    bank_name: string
 }
 
 export class TeamMethod {

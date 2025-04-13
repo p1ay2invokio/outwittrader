@@ -19,5 +19,5 @@ export interface UserInterface {
     bank_img: string,
     thai_id_img: string,
     team_id: number,
-    referral_id: number
+    referral_id: number,
 }

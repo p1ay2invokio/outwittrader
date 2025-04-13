@@ -92,7 +92,7 @@ const Register = () => {
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                             <div className="w-full grid grid-cols-2 gap-[12px]">
-                                <div className="flex flex-col">
+                                <div className="flex flex-col justify-between">
                                     <label>อายุ</label>
                                     <input value={age} onChange={(e) => {
                                         setAge(e.target.value)
@@ -103,6 +103,7 @@ const Register = () => {
                                     <select value={gender} onChange={(e) => {
                                         setGender(e.target.value)
                                     }} name="gender">
+                                        <option value={"empty"} id="empty">ระบุเพศ</option>
                                         <option value={"male"} id="male">ชาย</option>
                                         <option value={"female"} id="female">หญิง</option>
                                         <option value={"non"} id="non">ไม่ระบุเพศ</option>
@@ -122,11 +123,17 @@ const Register = () => {
                             <div className="w-full grid grid-cols-2 gap-[12px]">
                                 <div className="flex flex-col">
                                     <label>อาชีพ</label>
-                                    <input value={job} onChange={(e) => {
+                                    <select value={job} onChange={(e) => {
                                         setJob(e.target.value)
-                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
+                                    }} name="gender">
+                                        <option value={"empty"} id="empty">เลือกอาชีพ</option>
+                                        <option value={"student"} id="student">นักเรียน / นักศึกษา</option>
+                                        <option value={"private-bussiness"} id="private-bussiness">ธุรกิจส่วนตัว</option>
+                                        <option value={"govern"} id="govern">รับราชการ</option>
+                                        <option value={"others"} id="others">อื่นๆ</option>
+                                    </select>
                                 </div>
-                                <div className="flex flex-col">
+                                <div className="flex flex-col justify-between">
                                     <label>รายได้</label>
                                     <input value={salary} onChange={(e) => {
                                         setSalary(e.target.value)
@@ -145,9 +152,17 @@ const Register = () => {
                                 <select value={bank_name} onChange={(e) => {
                                     setBankName(e.target.value)
                                 }} name="gender">
-                                    <option value={"kbank"} id="male">กสิกร</option>
-                                    <option value={"scb"} id="female">ไทยพาณิชย์</option>
+                                    <option value={"empty"} id="empty">เลือกธนาคาร</option>
+                                    <option value={"kbank"} id="male">ธนาคารกสิกรไทย</option>
+                                    <option value={"scb"} id="female">ธนาคารไทยพาณิชย์</option>
+                                    <option value={"memo"} id="non">ธนาคารกรุงไทย</option>
+                                    <option value={"memo"} id="non">ธนาคารกรุงเทพ</option>
+                                    <option value={"kbank"} id="male">ธนาคารกรุงศรีอยุธยา</option>
+                                    <option value={"scb"} id="female">ธนาคารทหารไทยธนชาต (ทีทีบี)</option>
+                                    <option value={"memo"} id="non">ธนาคารซีไอเอ็มบี ไทย</option>
+                                    <option value={"memo"} id="non">ธนาคารยูโอบี</option>
                                     <option value={"memo"} id="non">ธนาคารออมสิน</option>
+                                    <option value={"memo"} id="non">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร (ธ.ก.ส.)</option>
                                 </select>
                             </div>
 
@@ -182,7 +197,7 @@ const Register = () => {
                             <div className="flex flex-col">
                                 <label>ชื่อทีมของคุณ(En)</label>
                                 <input value={team_name} onChange={(e) => {
-                                    setTeamName(e.target.value)
+                                    setTeamName(e.target.value.replace(/[^a-zA-Z]/g, ""))
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                         </div>
