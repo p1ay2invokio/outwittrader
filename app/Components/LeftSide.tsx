@@ -37,7 +37,7 @@ const LeftSide = () => {
 
                 <div className="flex flex-col justify-center items-center w-full h-[100px] pt-[30px] font-[medium]">
                     <img className="rounded-full w-[80px]" src="/avatar.webp"></img>
-                    <p className="text-white mt-[10px] text-[14px]">Admin Test</p>
+                    <p className="text-white mt-[10px] text-[14px]">{User?.username}</p>
                 </div>
 
                 <div className="flex flex-col justify-start mt-[30px] mb-[10px] items-start w-full pl-[20px] text-white font-[light] text-[12px]">
@@ -120,7 +120,7 @@ const LeftSide = () => {
                             toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), { pending: 'กำลังออกจากระบบ', success: 'ออกจากระบบสำเร็จ' }, { type: 'success', hideProgressBar: true, closeButton: false, position: 'bottom-right' })
                             setTimeout(() => {
                                 localStorage.removeItem('token')
-                                window.location.href = "/landingpage"
+                                window.location.href = "https://outwittrader.com/landingpage"
                             }, 1500)
                         }
                     })
