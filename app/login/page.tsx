@@ -55,7 +55,7 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className="flex justify-center items-center h-[100vh]">
+            <div className="flex justify-center items-center h-[calc(100vh-100px)]">
                 <div className="w-[400px] h-[350px] flex-col bg-white rounded-[12px] shadow-xl flex justify-center p-[20px] max-[400px]:w-[350px]">
                     <div className="flex justify-between">
                         <div>
@@ -68,7 +68,7 @@ const Login = () => {
                     <div>
                         <input onChange={(e) => {
                             setUsername(e.target.value)
-                        }} placeholder="บัญชีผู้ใช้" className="w-full h-[50px] border-black/20 outline-none border-b-[1px] font-[light] mb-[5px] mt-[5px] text-[14px]"></input>
+                        }} placeholder="บัญชีผู้ใช้" className="w-full h-[50px] border-black/20 outline-none border-b-[1px] font-[light] mb-[5px] mt-[5px] text-[16px]"></input>
 
                         <input onKeyDown={(e) => {
                             if (e.key == 'Enter') {
@@ -76,7 +76,7 @@ const Login = () => {
                             }
                         }} onChange={(e) => {
                             setPassword(e.target.value)
-                        }} placeholder="รหัสผ่าน" className="w-full h-[50px] border-black/20 font-[light] border-b-[1px] outline-none password-input text-[14px]"></input>
+                        }} placeholder="รหัสผ่าน" className="w-full h-[50px] border-black/20 font-[light] border-b-[1px] outline-none password-input text-[16px]"></input>
 
                         <button onClick={async () => {
                             LoginFunction()

@@ -43,9 +43,9 @@ const Dashboard = () => {
             <Header />
             <LeftSide />
 
-            <div className="pl-[250px] pr-[50px] pt-[100px] pb-[50px]">
-                <div className="border-transparent border-[1px] h-[100vh] grid grid-cols-[35%,35%,30%] gap-[10px]">
-                    <div className="bg-transparent h-full grid grid-cols-2 col-span-1 gap-[20px] text-[14px]">
+            <div className="pl-[250px] pr-[50px] pt-[100px] pb-[50px] max-[768px]:pl-[30px]">
+                <div className="border-transparent border-[1px]  grid grid-cols-[35%,35%,30%] max-[380px]:grid-cols-1 gap-[10px] max-[768px]:grid-cols-1">
+                    <div className="bg-transparent h-full grid grid-cols-2 col-span-1 gap-[20px] text-[14px] max-[768px]:grid-cols-1">
                         <div className="border-l-[4px] shadow-sm rounded-[4px] w-full h-full p-[10px] border-blue-700/80 text-black">
                             <p className="font-[medium]">สัญญาณซิกแนลคงเหลือ</p>
                             {account && account.length > 0 ? <p className="font-[light] text-[14px]">{account[0].total_days} วัน</p> : null}
@@ -83,7 +83,7 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="border shadow-sm rounded-[4px] w-full h-full col-span-1 row-span-2 p-[10px]">
+                    <div className="border shadow-sm rounded-[4px] w-full h-full col-span-1 row-span-2 p-[10px] max-[768px]:row-span-1">
                         <p className="font-[medium] text-[14px]">ถอนเงิน</p>
                         <p className="font-[light]">รายได้รวมของคุณ</p>
                         <p className="font-[bold] text-[16px]">{account && account.length > 0 ? (account[0].total_money + account[0].broker_money).toFixed(2) : 0} บาท</p>
@@ -136,7 +136,7 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="border shadow-sm rounded-[4px] w-full h-full col-span-2 p-[10px] overflow-scroll">
+                    <div className="border shadow-sm rounded-[4px] w-full h-full col-span-2 p-[10px] overflow-scroll max-[768px]:col-span-1">
                         <table className="w-full">
                             <thead className="font-[medium] text-[14px] border-b-[1px]">
                                 <tr>
@@ -163,7 +163,14 @@ const Dashboard = () => {
                                             {/* <td colSpan={4}>1</td> */}
                                         </tr>
                                     )
-                                }) : null}
+                                }) : <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td className="font-[light] text-[14px] pt-[20px]">ไม่พบพาร์ทเนอร์สั่งซื้อ</td>
+                                        <td></td>
+                                        <td></td>
+                                </tr>}
                             </tbody>
                         </table>
                     </div>

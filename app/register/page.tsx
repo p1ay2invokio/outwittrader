@@ -61,8 +61,8 @@ const Register = () => {
     return (
         <div>
             <Header />
-            <div className="flex justify-center items-center h-[100vh]">
-                <div className="w-[400px] h-[550px] flex-col bg-white rounded-[12px] shadow-xl flex justify-center p-[20px] max-[400px]:w-[350px]">
+            <div className="flex justify-center items-center h-[calc(100vh-100px)]">
+                <div className="w-[400px] h-[530px] flex-col bg-white rounded-[12px] shadow-xl flex justify-center p-[20px] max-[400px]:w-[350px]">
 
                     <div className="flex justify-between">
                         <div>
@@ -77,15 +77,15 @@ const Register = () => {
                         <input required onChange={(e) => {
                             // setCfPassword(e.target.value)
                             setEmail(e.target.value)
-                        }} placeholder="อีเมลล์" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
+                        }} placeholder="อีเมลล์" className="w-full text-[16px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
                         <input onChange={(e) => {
                             setUsername(e.target.value)
-                        }} placeholder="บัญชีผู้ใช้" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
+                        }} placeholder="บัญชีผู้ใช้" className="w-full text-[16px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
                         <input onChange={(e) => {
                             setPassword(e.target.value)
-                        }} placeholder="รหัสผ่าน" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light] password-input"></input>
+                        }} placeholder="รหัสผ่าน" className="w-full text-[16px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light] password-input"></input>
 
                         <input onKeyUp={(e) => {
                             if (e.key == 'Enter') {
@@ -93,7 +93,7 @@ const Register = () => {
                             }
                         }} onChange={(e) => {
                             setCfPassword(e.target.value)
-                        }} placeholder="ยืนยันรหัสผ่าน" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light] password-input"></input>
+                        }} placeholder="ยืนยันรหัสผ่าน" className="w-full text-[16px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light] password-input"></input>
 
                         <input onChange={(e) => {
                             setPhoneNumber(e.target.value)
@@ -101,7 +101,7 @@ const Register = () => {
                             if (e.key == 'Enter') {
                                 RegisterFunction()
                             }
-                        }} placeholder="เบอร์โทรศัพท์" className="w-full text-[14px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
+                        }} placeholder="เบอร์โทรศัพท์" className="w-full text-[16px] h-[50px] border-b-[1px] border-black/20 outline-none font-[light]"></input>
 
                         {/* <input onChange={(e) => {
                             setReferral(e.target.value)

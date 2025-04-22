@@ -72,7 +72,7 @@ const Room = () => {
                 }} className='w-[80px] mt-[20px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
                     <p className='font-[medium] text-white'>กลับ</p>
                 </div>
-                {user && user.length > 0 ? user[0].role == 1 ? <div onClick={() => {
+                {user && user.length > 0 ? user[0].role == 2 ? <div onClick={() => {
                     new RoomMethod().createRoom('meeting-outwit-room-1').then((res) => {
                         Swal.fire("สร้างห้องสำเร็จ")
                         setTimeout(() => {

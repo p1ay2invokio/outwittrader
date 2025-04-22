@@ -9,6 +9,11 @@ import { IoArrowBackCircleSharp, IoFolderOpen } from "react-icons/io5"
 import LeftSide from "@/app/Components/LeftSide";
 import dayjs, { Dayjs } from "dayjs";
 import Header from "@/app/Components/Header";
+import { FcRefresh } from "react-icons/fc";
+import { BiRefresh } from "react-icons/bi";
+import Swal from "sweetalert2";
+import { jwtDecode } from "jwt-decode";
+import { UserInterface } from "@/app/Interfaces/UserInterface";
 
 interface NewsInterface {
     forex_id: number,
@@ -30,10 +35,22 @@ const Forex = () => {
 
 
     const [news, setNews] = useState<ForexInterface[]>([])
+    const [user, setUser] = useState<UserInterface | null>(null)
+
+    const [loadData, setLoadData] = useState<boolean>(true)
 
     let now = dayjs().format()
 
     const initial = async () => {
+
+        let token = localStorage.getItem("token")
+
+        if(token){
+            let response_user = jwtDecode(token) as UserInterface
+            // console.log(user)
+            setUser(response_user)
+        }
+
         let forexData = await new NewsMethod().getForex()
         let today = new Date().toLocaleString('EN-en').split("/")
         let convert_today = `${today[2].split(" ")[0].split(",")[0]}-${Number(today[0]) < 10 ? `0${today[0]}` : today[0]}-${Number(today[1]) < 10 ? `0${today[1]}` : today[1]}`
@@ -55,24 +72,31 @@ const Forex = () => {
         // console.log(convertData)
         console.log(dataList)
         setNews(dataList)
+
+        setLoadData(false)
     }
 
     useEffect(() => {
         initial()
     }, [])
 
+
+    if(loadData){
+        return null
+    }
+
     return (
-        <div className="pt-[20px]">
+        <div className="pt-[20px] pl-[200px] max-[768px]:pl-[0px]">
 
             <LeftSide />
 
-            <Header/>
+            <Header />
 
-            <IoArrowBackCircleSharp onClick={() => {
+            {/* <IoArrowBackCircleSharp onClick={() => {
                 navigate.push('/signal')
-            }} className="cursor-pointer absolute top-5 left-10" size={40}></IoArrowBackCircleSharp>
+            }} className="cursor-pointer absolute top-5 left-10" size={40}></IoArrowBackCircleSharp> */}
 
-            <div className="flex gap-[10px] justify-center mb-[20px]">
+            {/* <div className="flex gap-[10px] justify-center mb-[20px]">
                 <div>
                     <div onClick={() => {
                         navigate.push("/news/time")
@@ -87,14 +111,34 @@ const Forex = () => {
                         <GiFactory size={20}></GiFactory>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
-            <div className="flex flex-col justify-center items-center mb-20">
-                <p className="font-[medium] mb-[10px]">วันที่ : {now.split("T")[0]}</p>
-                <table className="w-[800px]">
+
+            <div className="flex flex-col justify-center items-center mb-20 mt-16">
+                <div className="flex items-center gap-[10px] mb-[10px]">
+                    <p className="font-[medium]">วันที่ : {now.split("T")[0]}</p>
+                    
+                    {user && user.role == 2 ? <div onClick={async()=>{
+                        let data:any = await new NewsMethod().updateForex()
+
+                        if(data.updateForexNews){
+                            Swal.fire("อัพเดทข่าวสาร Forex Factory สำเร็จ")
+                        }else{
+                            Swal.fire("บางอย่างผิดพลาดรอ 5 นาทีแล้วกด refresh ใหม่")
+                        }
+
+                        // console.log(data)
+
+                    }} className="w-[90px] h-[40px] bg-blue-800 gap-[5px] cursor-pointer rounded-[8px] flex justify-center items-center">
+                        <BiRefresh size={30} className="text-white"  />
+                        <p className="text-white font-[medium] text-[14px]">อัพเดท</p>
+                    </div> : null}
+
+                </div>
+                <table className="w-[80%]">
                     <thead className="bg-blue-800 text-white">
-                        <tr className="font-[medium] text-[14px]">
+                        <tr className="font-[medium] text-[14px] max-[768px]:text-[10px]">
                             <td className="p-[5px] rounded-tl-[8px]">วันที่</td>
                             <td>เวลา</td>
                             <td>สกุลเงิน</td>

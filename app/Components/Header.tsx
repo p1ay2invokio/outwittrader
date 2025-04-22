@@ -6,8 +6,9 @@ import { useEffect, useState } from "react"
 import { toast, ToastContainer } from "react-toastify"
 import Swal from "sweetalert2"
 import { Token } from "../Interfaces/TokenInterface"
-import { FaCreditCard } from "react-icons/fa";
+import { FaCreditCard, FaHamburger } from "react-icons/fa";
 import { UserMethod } from "../methods/UserMethod"
+import { GiHamburgerMenu } from "react-icons/gi"
 
 interface UserInterface {
     id: number,
@@ -25,21 +26,94 @@ const Header = () => {
     // let [user, setUser] = useState<UserInterface[] | null>([])
     let [token, setToken] = useState<string | null>('')
 
+    let [loadapi, setLoadAPI] = useState<boolean>(true)
+
+    let [menu, setMenu] = useState<boolean>(false)
+
 
     const initial = async () => {
         const token = localStorage.getItem("token")
 
         setToken(token)
+        setLoadAPI(false)
     }
 
     useEffect(() => {
         initial()
     }, [])
 
+    if (loadapi) {
+        return null
+    }
+
 
     return (
         <div>
-            <div className="w-full h-[60px] bg-[#0e1111]  flex items-center p-[20px] justify-between fixed top-0 left-0 z-[6]">
+
+            {menu ? <div className="w-full h-[100vh] bg-black/80 fixed top-[60px] left-0 z-[1]">
+                <div onClick={() => {
+                    navigate.push("/")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">ภาพรวม</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/rental")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">เช่าสัญญาณ</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/signal")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">ห้องสัญญาณ</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/news/forex")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
+                    <p className="text-white font-[medium]">-</p>
+                    <p className="text-white font-[medium] text-[12px]">ข่าวประจำวัน forexfactory</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/news/time")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
+                    <p className="text-white font-[medium]">-</p>
+                    <p className="text-white font-[medium] text-[12px]">ข่าวประจำวัน tradertimezone</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/partner")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
+                    <p className="text-white font-[medium]">-</p>
+                    <p className="text-white font-[medium] text-[12px]">Partner</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/learning/guidebook")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">คู่มือ</p>
+                </div>
+                <div onClick={() => {
+                    navigate.push("/setting")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">ตั้งค่า</p>
+                </div>
+
+                <div onClick={() => {
+                    Swal.fire({ title: "ต้องการออกจากระบบ", showConfirmButton: true, showCancelButton: true, confirmButtonText: 'ออก', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#cb4335', cancelButtonColor: '#e67e22' }).then((res) => {
+                        if (res.isConfirmed) {
+                            toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), { pending: 'กำลังออกจากระบบ', success: 'ออกจากระบบสำเร็จ' }, { type: 'success', hideProgressBar: true, closeButton: false, position: 'bottom-right' })
+                            setTimeout(() => {
+                                localStorage.removeItem('token')
+                                window.location.href = "https://outwittrader.com/landingpage"
+                            }, 1500)
+                        }
+                    })
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-white font-[medium]">ออกจากระบบ</p>
+                </div>
+            </div> : null}
+
+            <div className="w-full h-[60px] bg-[#0e1111]  flex items-center p-[20px] justify-between fixed top-0 left-0 z-[1]">
                 <div onClick={() => {
                     navigate.push("/")
                 }} className="flex justify-center items-center gap-[10px] cursor-pointer">
@@ -62,6 +136,12 @@ const Header = () => {
                         }} className="text-white font-[light] text-[14px] cursor-pointer">สมัครสมาชิก</p>
                     </div> : null}
                 </div>
+
+                {token ? <div onClick={() => {
+                    setMenu(!menu)
+                }} className="max-[768px]:block hidden cursor-pointer">
+                    <GiHamburgerMenu size={20} className="text-white"></GiHamburgerMenu>
+                </div> : null}
 
             </div>
             <ToastContainer />

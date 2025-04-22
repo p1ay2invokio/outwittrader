@@ -56,7 +56,7 @@ const GuideBook = () => {
             <div className="mb-[80px]">
                 <Header />
 
-                <div className="mt-[80px] pl-[220px]">
+                <div className="mt-[80px] pl-[220px] max-[768px]:pl-[10px]">
 
                     <div className="mb-[10px]">
                         <p className="font-[medium] text-[20px]">คู่มือและบทเรียนการใช้งาน (ทั่วไป)</p>

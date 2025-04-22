@@ -44,7 +44,7 @@ const Signal = () => {
             <Header />
 
             <div className="h-[calc(100vh-80px)] pl-[80px] pr-[80px] max-[600px]:pl-[20px] max-[600px]:pr-[20px] pt-[20px] mt-[80px]">
-                <div className="w-full pl-[200px]">
+                <div className="w-full pl-[200px] max-[768px]:p-[20px]">
                     <div className="flex items-center gap-[10px]">
                         <IoArrowBackCircleSharp onClick={() => {
                             navigate.push("/")
@@ -58,7 +58,7 @@ const Signal = () => {
                     <div className="w-full flex justify-center">
 
 
-                        <div className="grid grid-cols-4 w-[1400px] place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px]">
+                        <div className="grid grid-cols-4 w-[1400px] place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px] max-[380px]:grid-cols-1">
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 1 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">

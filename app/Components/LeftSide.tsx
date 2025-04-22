@@ -18,6 +18,7 @@ const LeftSide = () => {
     const navigate = useRouter()
 
     const [User, setUser] = useState<UserInterface | null>(null)
+    let [loadapi, setLoadAPI] = useState<boolean>(true)
 
     const initial = async () => {
         const token = localStorage.getItem("token")
@@ -25,29 +26,34 @@ const LeftSide = () => {
 
         // console.log(dat)
         setUser(dat)
+        setLoadAPI(false)
     }
 
     useEffect(() => {
         initial()
     }, [])
 
+    if(loadapi){
+        return null
+    }
+
     return (
-        <div className="w-[200px] h-[100vh] fixed left-0 top-[60px] bg-black">
+        <div className="w-[200px] h-[100vh] fixed left-0 top-[60px] bg-black max-[768px]:hidden">
             <div className="w-full p-[10px] bg-slate-700">
 
                 <div className="flex flex-col justify-center items-center w-full h-[100px] pt-[30px] font-[medium]">
                     <img className="rounded-full w-[80px]" src="/avatar.webp"></img>
-                    <p className="text-white mt-[10px] text-[14px]">{User?.username}</p>
+                    <p className="text-white mt-[10px] text-[14px] font-[pbold]">{User?.username}</p>
                 </div>
 
                 <div className="flex flex-col justify-start mt-[30px] mb-[10px] items-start w-full pl-[20px] text-white font-[light] text-[12px]">
-                    <p>id : {User?.id}</p>
-                    <p>{User?.email}</p>
-                    <p>Date : {User?.total_days} วัน</p>
+                    <p className="font-[plight] text-[12px]">ID : {User?.id}</p>
+                    <p className="font-[plight] text-[12px]">{User?.email}</p>
+                    <p className="font-[plight] text-[12px]">Date : {User?.total_days}</p>
                 </div>
 
                 <div className="flex justify-center">
-                    <div className="bg-black rounded-[8px] flex justify-center items-center gap-[5px] p-[4px] text-[12px]">
+                    <div className="bg-black font-[pbold] rounded-[8px] flex justify-center items-center gap-[5px] p-[4px] text-[12px]">
                         <p className="text-white">Status</p>
                         <div className={`p-[3px] ${User?.role == 0 ? "bg-gray-500" : User?.role == 1 ? "bg-blue-700" : User?.role == 2 ? "bg-purple-500" : "Normal"} rounded-[4px]`}>
                             <p className="text-white">{User?.role == 0 ? "Normal" : User?.role == 1 ? "Member" : User?.role == 2 ? "Admin" : "Normal"}</p>

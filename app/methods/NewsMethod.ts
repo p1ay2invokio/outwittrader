@@ -14,4 +14,12 @@ export class NewsMethod {
             })
         })
     }
+
+    public updateForex=async()=>{
+        return new Promise((resolve)=>{
+            axios.get(`${END_POINT}/updateForex`).then((res)=>{
+                resolve(res.data)
+            })
+        })
+    }
 }
