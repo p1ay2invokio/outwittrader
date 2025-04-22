@@ -55,7 +55,7 @@ const AdminDashboard = () => {
     // }, [])
 
     return (
-        <div className="pl-[280px] pt-[100px] pr-[50px]">
+        <div className="pl-[280px] pt-[100px] pr-[50px] max-[768px]:pl-[20px]">
 
 
             {modalPartner ? <div onClick={(e) => {
@@ -161,7 +161,7 @@ const AdminDashboard = () => {
             <Header />
             <LeftSide />
 
-            <div className="w-full h-[calc(90vh-100px)] border-[1px] rounded-[8px] p-[10px] grid grid-cols-6 gap-[20px]">
+            <div className="w-full h-[calc(90vh-100px)] border-[1px] rounded-[8px] p-[10px] flex gap-[20px]">
                 <button onClick={() => {
                     setModal(true)
                 }} className="p-[10px] h-[40px] bg-white rounded-[4px] shadow-md border-l-[10px] border-blue-800">

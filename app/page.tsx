@@ -21,6 +21,8 @@ const Home = () => {
 
   let [username, setUsername] = useState<string>('')
 
+  let [loadapi, setLoadAPI] = useState<boolean>(true)
+
 
   useEffect(() => {
     let token = localStorage.getItem("token")
@@ -31,7 +33,13 @@ const Home = () => {
     } else {
       redirect("/landingpage")
     }
+
+    setLoadAPI(false)
   }, [])
+
+  if(loadapi){
+    return null
+  }
 
   return (
     <div>
@@ -41,18 +49,18 @@ const Home = () => {
 
         <LeftSide />
 
-        <div className="w-full h-[100vh] pl-[250px] pr-[50px] gap-[10px] pt-[100px] flex mb-[300px]">
-          <div className="grid-cols-3 grid gap-[10px] w-full cols-span-2">
+        <div className="w-full h-[100vh] pl-[250px] pr-[50px] gap-[10px] pt-[100px] flex mb-[300px] max-[768px]:pl-[30px]">
+          <div className="grid-cols-3 grid gap-[10px] w-full cols-span-2 max-[1024px]:grid-cols-1">
             <div className="w-full border-[1px] rounded-[8px] h-[250px] shadow col-span-2">
               {/* <p>Test1</p> */}
-              <Carousel slide={true} slideInterval={3000} className="w-full h-full">
+              <Carousel slide={true} slideInterval={3000} className="w-full h-full z-[-1]">
                 <img className="w-full h-full" src="/slide1.png"></img>
                 <img className="w-full h-full" src="/slide2.png"></img>
                 <img className="w-full h-full" src="/slide3.png"></img>
               </Carousel>
             </div>
 
-            <div className="w-full col-span-1 border-[1px] h-[250px] rounded-[8px] shadow">
+            <div className="w-full col-span-1 border-[1px] h-[250px] rounded-[8px] shadow-md">
               <iframe className="w-full h-full rounded-[8px]" src="https://www.youtube.com/embed/dd1jDsX0VbI?si=AJw70oHooDvRDlUg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </div>
 

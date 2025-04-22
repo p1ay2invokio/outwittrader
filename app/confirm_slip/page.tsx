@@ -28,7 +28,7 @@ const ConfirmSlip = () => {
         <div>
             {/* <Header /> */}
 
-            <div className="grid grid-cols-6 place-items-center mt-[100px] gap-y-[20px] max-[600px]:grid-cols-1 max-[768px]:grid-cols-3 max-[1024px]:grid-cols-4">
+            <div className={`grid grid-cols-6 place-items-center mt-[100px] gap-y-[20px] max-[600px]:grid-cols-1 max-[768px]:grid-cols-3 max-[1024px]:grid-cols-4 ${orders && orders.length <= 0 ? 'grid-cols-1 mt-[0px]' : ''}`}>
                 {orders && orders.length > 0 ? orders.map((item => {
                     return (
                         <div key={item.id} className="w-[200px] h-[200px] shadow p-[10px] font-[light]">
@@ -67,7 +67,9 @@ const ConfirmSlip = () => {
                             </div>
                         </div>
                     )
-                })) : null}
+                })) : <div className="w-full h-[100vh] flex justify-center items-center col-span-6">
+                    <p>ยังไม่มีรายการสั่งซื้อ :(</p>
+                </div>}
             </div>
 
 
