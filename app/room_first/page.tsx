@@ -80,7 +80,7 @@ const Room = () => {
                         }, 1500)
                     })
                 }} className='w-[350px] mt-[20px] cursor-pointer h-[40px] bg-blue-600 rounded-[8px] flex justify-center items-center'>
-                    <p className='font-[medium] text-white'>สร้างห้อง (กดในกรณีที่ห้องไม่ถูกเปิด Meeting)</p>
+                    <p className='font-[medium] text-white'>สร้างห้อง 1 (กดในกรณีที่ห้องไม่ถูกเปิด Meeting)</p>
                 </div> : null : null}
 
             </div>

@@ -4,8 +4,11 @@ import { useEffect, useRef } from "react"
 import Header from "../Components/Header"
 import { Howl, Howler } from 'howler'
 import { FcBullish, FcDocument, FcRefresh, FcTimeline } from "react-icons/fc"
+import { useRouter } from "next/navigation"
 
 const LandingPage = () => {
+
+    let navigate = useRouter()
 
     const videoRef = useRef(null)
 
@@ -25,17 +28,17 @@ const LandingPage = () => {
             <Header />
 
             <div className="flex flex-col gap-4 fixed top-[200px] right-[0px]">
-                <a href="#section1" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-blue-500 flex justify-center items-center cursor-pointer shadow-sm">
-                    <p className="font-[medium] text-white">พาร์ท 1</p>
+                <a href="#section1" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-gradient-to-r from-blue-400 to-blue-700 flex justify-center items-center cursor-pointer shadow-sm">
+                    <p className="font-[bold] text-white">พาร์ท 1</p>
                 </a>
-                <a href="#section2" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-blue-500 flex justify-center items-center cursor-pointer shadow-sm">
-                    <p className="font-[medium] text-white">พาร์ท 2</p>
+                <a href="#section2" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-gradient-to-r from-blue-400 to-blue-700 flex justify-center items-center cursor-pointer shadow-sm">
+                    <p className="font-[bold] text-white">พาร์ท 2</p>
                 </a>
-                <a href="#section3" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-blue-500 flex justify-center items-center cursor-pointer shadow-sm">
-                    <p className="font-[medium] text-white">พาร์ท 3</p>
+                <a href="#section3" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-gradient-to-r from-blue-400 to-blue-700  flex justify-center items-center cursor-pointer shadow-sm">
+                    <p className="font-[bold] text-white">พาร์ท 3</p>
                 </a>
-                <a href="#section4" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-blue-500 flex justify-center items-center cursor-pointer shadow-sm">
-                    <p className="font-[medium] text-white">พาร์ท 4</p>
+                <a href="#section4" className="w-[100px] h-[40px] rounded-tl-[8px] rounded-bl-[8px] bg-gradient-to-r from-blue-400 to-blue-700  flex justify-center items-center cursor-pointer shadow-sm">
+                    <p className="font-[bold] text-white">พาร์ท 4</p>
                 </a>
             </div>
 
@@ -43,10 +46,12 @@ const LandingPage = () => {
                 {/* <img src="./bg.webp" className="h-full w-full object-cover"></img> */}
                 <div className="flex justify-center items-center max-[1024px]:mt-[50px]">
                     <div className="flex items-center max-[1200px]:flex-col gap-[20px]">
-                        <div className="w-[600px] max-[600px]:w-[300px] max-[600px]:mt-[50px] max-[820px]:mb-[30px] p-[20px] bg-white/90 shadow rounded-[8px]">
+                        <div className="w-[600px] max-[600px]:w-[300px] max-[600px]:mt-[50px] max-[820px]:mb-[30px] p-[20px] bg-slate-100 shadow-2xl border-l-[10px] border-l-blue-500 rounded-[8px]">
                             <p className="font-[medium] text-[24px] text-black">ผู้ให้บริการปล่อยเช่าสัญญาน OutwitTrader</p>
                             <p className="font-[light] text-[16px] text-black">เรามีการทดสอบ สถิติย้อนหลัง OutwitTrader มีความแม่นยำสูงถึง 80-95% โดยมีการใช้สัญญาณและใช้เทคนิคประกอบการตัดสินใจ สัญญาณออกวันละ 30-70 สัญญาณต่อวัน สามารถใช้ร่วมกับตลาด ไบนารี่ออฟชั่น</p>
-                            <button className="w-[170px] h-[45px] border-[0px] border-white mt-[15px] font-[medium] text-[20px] bg-black text-white rounded-[8px]">เริ่มต้นตอนนี้</button>
+                            <button onClick={()=>[
+                                navigate.push("/register")
+                            ]} className="w-[170px] h-[45px] border-[0px] border-white mt-[15px] font-[medium] text-[20px] bg-gradient-to-l from-black/70 to-black text-white rounded-full">เริ่มต้นตอนนี้</button>
                         </div>
                         <div className="w-[560px] h-[315px] max-[600px]:w-[300px]">
                             <img src="/com.webp"></img>
@@ -57,10 +62,8 @@ const LandingPage = () => {
 
             <div className="h-[100vh] flex flex-col justify-center items-center bg-white" id="section2">
 
-                <div className="w-[700px] rounded-[4px] max-[768px]:w-full max-[768px]:p-[20px]">
-                    <video className="rounded-[4px] w-full" ref={videoRef} autoPlay muted={true} loop src="/video.mp4">
-                        {/* <source src="/video.mp4" type="video/mp4"></source> */}
-                    </video>
+                <div className="w-[700px] h-[400px] rounded-[4px] max-[768px]:w-full max-[768px]:p-[20px]">
+                    <iframe className="w-full h-full rounded-[8px]" src="https://www.youtube.com/embed/dd1jDsX0VbI?si=AJw70oHooDvRDlUg&autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                 </div>
                 <div className="flex flex-col justify-center items-center mt-[10px] p-[10px] bg-white">
                     <p className="font-[medium] text-[24px]">ทำไมต้องใช้ OutwitTrader</p>
@@ -102,7 +105,7 @@ const LandingPage = () => {
 
             <div className="h-[calc(100vh+60px)] pt-[80px] flex flex-col items-center bg-white" id="section4">
                 <div className="w-[80%]">
-                    <div className="w-[100%] p-[10px] bg-blue-800 text-white rounded-[8px]">
+                    <div className="w-[100%] p-[10px] bg-gradient-to-tr from-blue-600 to-blue-900 text-white rounded-[8px]">
                         <p className="font-[medium] text">คำเตือนความเสี่ยง:</p>
                         <p className="font-[light] max-[768px]:text-[12px]">
                             อัพเดทใหม่_21032025

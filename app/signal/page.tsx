@@ -62,7 +62,7 @@ const Signal = () => {
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 1 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
-                                    <Image alt="." width={300} height={200} src="/1m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                    <Image alt="." width={300} height={200} src="/1n.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
                                 <div onClick={async () => {
                                     if (detailUser && detailUser.length > 0) {
@@ -76,7 +76,7 @@ const Signal = () => {
                                             })
                                         }
                                     }
-                                }} className="w-full h-[40px] bg-blue-700 rounded-[4px] cursor-pointer flex justify-center items-center mt-[10px]">
+                                }} className="w-[70%] h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full cursor-pointer flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
@@ -95,20 +95,22 @@ const Signal = () => {
                             }} className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 5 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
-                                    <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                    <Image alt="." width={300} height={200} src="/2n.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
-                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                <div className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
 
 
                             <div className="w-full flex flex-col items-center">
-                                <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ 5 นาที</p>
+                                <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ 1 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
-                                    <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                    <Image alt="." width={300} height={200} src="/5.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
-                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                <div onClick={()=>{
+                                    window.open("https://t.me/+z-qnsbXu4dI4ZTU1", "_blank")
+                                }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
@@ -116,9 +118,11 @@ const Signal = () => {
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ 5 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
-                                    <Image alt="." width={300} height={200} src="/5m.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
+                                    <Image alt="." width={300} height={200} src="/6.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
-                                <div className="w-full cursor-pointer h-[40px] bg-blue-700 rounded-[4px] flex justify-center items-center mt-[10px]">
+                                <div onClick={()=>{
+                                    window.open("https://t.me/+IBa8IS7ZoZ05M2M1", "_blank")
+                                }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
