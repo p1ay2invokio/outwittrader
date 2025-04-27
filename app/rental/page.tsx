@@ -151,7 +151,7 @@ const RentSignal = () => {
               return (
                 <div key={item.id} className="flex flex-col gap-[10px]">
                   <div className="w-[300px] h-[300px] bg-white shadow-lg rounded-[8px] p-[10px] relative">
-                    {item.special ? <p className='p-[5px] bg-yellow-300 absolute right-0 top-0 text-white rounded-l-[8px] font-[medium]'>พิเศษ</p> : null}
+                    {item.special ? <p className='p-[5px] bg-gradient-to-tr from-yellow-300 to-purple-300 absolute right-0 top-0 text-white rounded-l-[8px] font-[bold]'>พิเศษ</p> : null}
                     <div className='w-full h-[200px] flex justify-center items-center'>
                       <Image alt="." width={300} height={200} src="/signal.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
                     </div>
@@ -174,7 +174,7 @@ const RentSignal = () => {
                     // })
                     setSpecificProduct(item)
                     setModal(true)
-                  }} className="w-full h-[40px] cursor-pointer bg-blue-700 flex justify-center items-center rounded-[4px] text-white">
+                  }} className="w-full h-[40px] cursor-pointer bg-gradient-to-b from-blue-500 to-blue-700 flex justify-center items-center rounded-full text-white">
                     <p className='font-[medium]'>เช่าสัญญาณ</p>
                   </div>
                 </div>

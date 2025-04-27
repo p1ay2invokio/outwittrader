@@ -77,14 +77,14 @@ const Home = () => {
                   <p className="font-[light] text-[12px] opacity-[60%]">ร่วมแบ่งปันเทคนิคการเทรดกับชุมชนนักลงทุน</p>
                   <p className="font-[light] text-[12px] opacity-[60%]">เข้าร่วมกลุ่มเลย!</p>
                 </div>
-                <img src="/qropenchat.jpg" className="w-[100px] h-[100px]"></img>
+                <img src="/line-openchat.jpg" className="w-[100px] h-[100px]"></img>
               </div>
               <div className="w-full border-[1px] rounded-[8px] shadow row-span-1 flex justify-between items-center p-[20px]">
                 <div className="w-[200px]">
                   <p className="font-[medium]">Line Official</p>
                   <p className="font-[light] text-[12px] opacity-[60%]">ไม่พลาดทุกโอกาสในตลาด! เข้าร่วมกลุ่มเทรดเดอร์ของเรา</p>
                 </div>
-                <img src="/qrline.png" className="w-[100px] h-[100px]"></img>
+                <img src="/line-of.png" className="w-[90px] h-[90px]"></img>
               </div>
               <div className="w-full border-[1px] rounded-[8px] shadow  row-span-2 p-[10px]">
                 <p className="font-[medium] mb-[10px]">(!) คำเตือนความเสี่ยง :</p>

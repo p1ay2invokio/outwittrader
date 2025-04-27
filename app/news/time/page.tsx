@@ -41,7 +41,7 @@ const Time = () => {
                 navigate.push("/signal")
             }} className="cursor-pointer absolute top-5 left-10" size={40}></IoArrowBackCircleSharp>
 
-            <div className="flex gap-[10px] justify-center mb-[20px]">
+            {/* <div className="flex gap-[10px] justify-center mb-[20px]">
                 <div>
                     <div className="p-[10px] cursor-pointer bg-blue-500/80 text-white rounded-[8px] font-[medium] text-[14px] flex gap-[5px] items-center">
                         <p>ช่วงเวลาการเทรด</p>
@@ -56,7 +56,7 @@ const Time = () => {
                         <GiFactory size={20}></GiFactory>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* <div onClick={() => {
                 navigate.push('/signal')
@@ -64,7 +64,7 @@ const Time = () => {
                 <p className='font-[medium] text-white'>กลับ</p>
             </div> */}
             {/* <p className="font-[light]">หน้าหลัก / ห้องสัญญาณ / ช่วงเวลา</p> */}
-            {code ? <iframe className="w-full h-[80vh] timezone" allow="autoplay; fullscreen" src={`https://en.tradertimerzone.com/fancy.php?sys=${code}`}></iframe> : <p>กำลังโหลด...</p>}
+            {code ? <iframe className="w-full h-[80vh] mt-[80px] timezone" allow="autoplay; fullscreen" src={`https://en.tradertimerzone.com/fancy.php?sys=${code}`}></iframe> : <p>กำลังโหลด...</p>}
         </div>
     )
 }
