@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "OutwitTrader",
   description: "ผู้ให้บริการปล่อยเช่าสัญญาณ",
+  icons: {
+    icon: '/logo.ico'
+  }
 };
 
 export default function RootLayout({
@@ -26,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="w-full">
-      <link rel="icon" href="/logo.ico" />
+      {/* <link rel="icon" href="logo.ico" /> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

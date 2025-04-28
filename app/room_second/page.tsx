@@ -28,8 +28,8 @@ const Room = () => {
             const response = await axios.post<string>(`${END_POINT}/meetings/join`, {
                 meetingID: 'meeting-outwit-room-2',
                 fullName: user_res.id,
-                avatarURL: user_res.role == 0 ? 'https://api-private.atlassian.com/users/9cea692d0a59c5e100680165cbbeb496/avatar' : 'https://cdn-icons-png.flaticon.com/512/7453/7453640.png',
-                role: user_res.role == 0 ? "viewer" : "moderator"
+                avatarURL: user_res.role == 0 || user_res.role == 1 ? 'https://api-private.atlassian.com/users/9cea692d0a59c5e100680165cbbeb496/avatar' : 'https://cdn-icons-png.flaticon.com/512/7453/7453640.png',
+                role: user_res.role == 0 || user_res.role == 1 ? "viewer" : "moderator"
             });
 
             return response.data
