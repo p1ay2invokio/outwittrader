@@ -26,6 +26,7 @@ const Register = () => {
     const [face, setFace] = useState<File | Blob | null | string>(null)
     const [thai_id_img, setThai_id_img] = useState<File | Blob | null | string>(null)
     const [bankImg, setBankImg] = useState<File | Blob | null | string>(null)
+    const [agree, setAgree] = useState<boolean>(false)
 
     // const [gender, setGender] 
 
@@ -68,164 +69,14 @@ const Register = () => {
         <div>
             <Header />
             <LeftSide />
-            <div className="pl-[300px] pt-[100px] pr-[50px]">
-                <div className="w-full h-[calc(100vh)] border-[1px] border-transparent p-[10px] flex justify-center items-center">
-                    <div className="w-[600px] h-[800px] flex justify-center flex-col border-[1px] border-transparent p-[20px]">
-                        <div className="w-full grid grid-cols-2 gap-[20px] items-end font-[light] text-[14px]">
-                            <div className="flex flex-col">
-                                <label>ชื่อ</label>
-                                <input value={name} onChange={(e) => {
-                                    setName(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="flex flex-col">
-                                <label>นามสกุล</label>
-                                <input value={surname} onChange={(e) => {
-                                    setSurname(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
 
-                            <div className="flex flex-col">
-                                <label>เลขบัตรประชาชน</label>
-                                <input value={thai_id} onChange={(e) => {
-                                    setThai_id(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="w-full grid grid-cols-2 gap-[12px]">
-                                <div className="flex flex-col justify-between">
-                                    <label>อายุ</label>
-                                    <input value={age} onChange={(e) => {
-                                        setAge(e.target.value)
-                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
-                                </div>
-                                <div className="flex flex-col">
-                                    <label>เพศ</label>
-                                    <select value={gender} onChange={(e) => {
-                                        setGender(e.target.value)
-                                    }} name="gender">
-                                        <option value={"empty"} id="empty">ระบุเพศ</option>
-                                        <option value={"male"} id="male">ชาย</option>
-                                        <option value={"female"} id="female">หญิง</option>
-                                        <option value={"non"} id="non">ไม่ระบุเพศ</option>
-                                    </select>
-                                    {/* <input type="" value={gender} onChange={(e) => {
-                                        setGender(e.target.value)
-                                    }} className="border-b-[1px] outline-none p-[5px]"></input> */}
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col">
-                                <label>ว/ด/ป</label>
-                                <input value={bod} onChange={(e) => {
-                                    setBod(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="w-full grid grid-cols-2 gap-[12px]">
-                                <div className="flex flex-col">
-                                    <label>อาชีพ</label>
-                                    <select value={job} onChange={(e) => {
-                                        setJob(e.target.value)
-                                    }} name="gender">
-                                        <option value={"empty"} id="empty">เลือกอาชีพ</option>
-                                        <option value={"student"} id="student">นักเรียน / นักศึกษา</option>
-                                        <option value={"private-bussiness"} id="private-bussiness">ธุรกิจส่วนตัว</option>
-                                        <option value={"govern"} id="govern">รับราชการ</option>
-                                        <option value={"others"} id="others">อื่นๆ</option>
-                                    </select>
-                                </div>
-                                <div className="flex flex-col justify-between">
-                                    <label>รายได้</label>
-                                    <input value={salary} onChange={(e) => {
-                                        setSalary(e.target.value)
-                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col">
-                                <label>เลขบัญชีธนาคาร</label>
-                                <input value={bank_account} onChange={(e) => {
-                                    setBankAccount(e.target.value)
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="flex flex-col">
-                                <label>ธนาคาร</label>
-                                <select value={bank_name} onChange={(e) => {
-                                    setBankName(e.target.value)
-                                }} name="gender">
-                                    <option value={"empty"} id="empty">เลือกธนาคาร</option>
-                                    <option value={"kbank"} id="male">ธนาคารกสิกรไทย</option>
-                                    <option value={"scb"} id="female">ธนาคารไทยพาณิชย์</option>
-                                    <option value={"memo"} id="non">ธนาคารกรุงไทย</option>
-                                    <option value={"memo"} id="non">ธนาคารกรุงเทพ</option>
-                                    <option value={"kbank"} id="male">ธนาคารกรุงศรีอยุธยา</option>
-                                    <option value={"scb"} id="female">ธนาคารทหารไทยธนชาต (ทีทีบี)</option>
-                                    <option value={"memo"} id="non">ธนาคารซีไอเอ็มบี ไทย</option>
-                                    <option value={"memo"} id="non">ธนาคารยูโอบี</option>
-                                    <option value={"memo"} id="non">ธนาคารออมสิน</option>
-                                    <option value={"memo"} id="non">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร (ธ.ก.ส.)</option>
-                                </select>
-                            </div>
-
-                            <div className="flex flex-col">
-                                <label>อัพโหลดใบหน้า</label>
-                                <input onChange={(e) => {
-                                    const files = e.target.files
-                                    if (files) {
-                                        setFace(files[0])
-                                    }
-                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="flex flex-col">
-                                <label>อัพโหลดสมุดบัญชีธนาคาร</label>
-                                <input onChange={(e) => {
-                                    const files = e.target.files
-                                    if (files) {
-                                        setBankImg(files[0])
-                                    }
-                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-
-                            <div className="flex flex-col">
-                                <label>อัพโหลดบัตรประชาชน</label>
-                                <input onChange={(e) => {
-                                    const files = e.target.files
-                                    if (files) {
-                                        setThai_id_img(files[0])
-                                    }
-                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                            <div className="flex flex-col">
-                                <label>ชื่อทีมของคุณ(En)</label>
-                                <input value={team_name} onChange={(e) => {
-                                    setTeamName(e.target.value.replace(/[^a-zA-Z]/g, ""))
-                                }} className="border-b-[1px] outline-none p-[5px]"></input>
-                            </div>
-                        </div>
-
-                        <div className="mt-[10px] flex flex-col gap-[20px] justify-center items-center">
-                            <div className="flex flex-col">
-                                <div className="flex gap-[10px] items-center mt-[10px]">
-                                    <input type="radio" id="general" name="general" className="hidden peer"></input>
-                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="general"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข ทั่วไป</p>
-                                </div>
-                                <div className="flex gap-[10px] items-center mt-[10px]">
-                                    <input type="radio" id="privacy" name="privacy" className="hidden peer"></input>
-                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="privacy"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข Privacy by Design</p>
-                                </div>
-                                <div className="flex gap-[10px] items-center mt-[10px]">
-                                    <input type="radio" id="payment" name="payment" className="hidden peer"></input>
-                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="payment"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข การชำระเงิน</p>
-                                </div>
-                                <div className="flex gap-[10px] items-center mt-[10px]">
-                                    <input type="radio" id="ilegal" name="ilegal" className="hidden peer"></input>
-                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="ilegal"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข กฏหมาย</p>
-                                </div>
-                            </div>
-                            <div onClick={async () => {
+            {agree ? <div className="w-full fixed top-[0px] h-[100vh] left-0 bg-black/60 flex justify-center items-center z-[10]">
+                <div className="w-[600px] h-[550px] bg-white rounded-[8px] p-[20px] shadow-lg">
+                    <p className='font-[bold] mb-[5px]'>กฏกติกาการเป็นพาร์ทเนอร์</p>
+                    <object data="/terms.pdf#toolbar=0" className="w-full h-[85%]"></object>
+                    <div className="flex gap-[5px]">
+                        <button onClick={async () => {
+                            if (name && surname && thai_id && age && gender && bod && job && salary && bank_account && bank_name && team_name) {
                                 let formData = new FormData()
                                 formData.append('name', name);
                                 formData.append('surname', surname);
@@ -249,8 +100,179 @@ const Register = () => {
                                     Swal.fire("สมัครเป็นพาร์ทเนอร์เสร็จสิ้น", "รอดำเนินการ 7-14 วัน", "success")
                                     navigate.push("/partner")
                                 }
+                            } else {
+                                Swal.fire("กรุณากรอกข้อมูลใหครบถ้วน", '', "error")
+                            }
+                        }} className="w-[100px] h-[35px] shadow-lg bg-green-600 rounded-[4px] text-white mt-[10px] font-[medium]">ยินยอม</button>
+                        <button onClick={() => {
+                            setAgree(false)
+                        }} className="w-[100px] h-[35px] shadow-lg bg-orange-600 rounded-[4px] text-white mt-[10px] font-[medium]">ยกเลิก</button>
+                    </div>
+                </div>
+            </div> : null}
+
+            <div className="pl-[300px] pt-[100px] pr-[50px]">
+                <div className="w-full h-[calc(100vh)] border-[1px] border-transparent p-[10px] flex justify-center items-center">
+                    <div className="w-[600px] h-[800px] flex justify-center flex-col border-[1px] border-transparent p-[20px]">
+                        <div className="w-full grid grid-cols-2 gap-[20px] items-end font-[light] text-[14px]">
+                            <div className="flex flex-col">
+                                <label>ชื่อ</label>
+                                <input required value={name} onChange={(e) => {
+                                    setName(e.target.value)
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="flex flex-col">
+                                <label>นามสกุล</label>
+                                <input required value={surname} onChange={(e) => {
+                                    setSurname(e.target.value)
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label>เลขบัตรประชาชน 13 หลัก</label>
+                                <input required value={thai_id} onChange={(e) => {
+                                    setThai_id(e.target.value)
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="w-full grid grid-cols-2 gap-[12px]">
+                                <div className="flex flex-col justify-between">
+                                    <label>อายุ</label>
+                                    <input required value={age} onChange={(e) => {
+                                        setAge(e.target.value)
+                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
+                                </div>
+                                <div className="flex flex-col">
+                                    <label>เพศ</label>
+                                    <select required value={gender} onChange={(e) => {
+                                        setGender(e.target.value)
+                                    }} name="gender">
+                                        <option value={"empty"} id="empty">ระบุเพศ</option>
+                                        <option value={"male"} id="male">ชาย</option>
+                                        <option value={"female"} id="female">หญิง</option>
+                                        <option value={"non"} id="non">ไม่ระบุเพศ</option>
+                                    </select>
+                                    {/* <input type="" value={gender} onChange={(e) => {
+                                        setGender(e.target.value)
+                                    }} className="border-b-[1px] outline-none p-[5px]"></input> */}
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label>ว/ด/ป เกิด</label>
+                                <input required value={bod} onChange={(e) => {
+                                    setBod(e.target.value)
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="w-full grid grid-cols-2 gap-[12px]">
+                                <div className="flex flex-col">
+                                    <label>อาชีพ</label>
+                                    <select value={job} onChange={(e) => {
+                                        setJob(e.target.value)
+                                    }} name="gender">
+                                        <option value={"empty"} id="empty">เลือกอาชีพ</option>
+                                        <option value={"student"} id="student">นักเรียน / นักศึกษา</option>
+                                        <option value={"private-bussiness"} id="private-bussiness">ธุรกิจส่วนตัว</option>
+                                        <option value={"govern"} id="govern">รับราชการ</option>
+                                        <option value={"others"} id="others">อื่นๆ</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <label>รายได้/ปี</label>
+                                    <input required value={salary} onChange={(e) => {
+                                        setSalary(e.target.value)
+                                    }} className="border-b-[1px] outline-none p-[5px]"></input>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label>เลขบัญชีธนาคาร</label>
+                                <input required value={bank_account} onChange={(e) => {
+                                    setBankAccount(e.target.value)
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="flex flex-col">
+                                <label>ธนาคาร</label>
+                                <select required value={bank_name} onChange={(e) => {
+                                    setBankName(e.target.value)
+                                }} name="gender">
+                                    <option value={"empty"} id="empty">เลือกธนาคาร</option>
+                                    <option value={"kbank"} id="male">ธนาคารกสิกรไทย</option>
+                                    <option value={"scb"} id="female">ธนาคารไทยพาณิชย์</option>
+                                    <option value={"memo"} id="non">ธนาคารกรุงไทย</option>
+                                    <option value={"memo"} id="non">ธนาคารกรุงเทพ</option>
+                                    <option value={"kbank"} id="male">ธนาคารกรุงศรีอยุธยา</option>
+                                    <option value={"scb"} id="female">ธนาคารทหารไทยธนชาต (ทีทีบี)</option>
+                                    <option value={"memo"} id="non">ธนาคารซีไอเอ็มบี ไทย</option>
+                                    <option value={"memo"} id="non">ธนาคารยูโอบี</option>
+                                    <option value={"memo"} id="non">ธนาคารออมสิน</option>
+                                    <option value={"memo"} id="non">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร (ธ.ก.ส.)</option>
+                                </select>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label>อัพโหลดใบหน้า</label>
+                                <input required onChange={(e) => {
+                                    const files = e.target.files
+                                    if (files) {
+                                        setFace(files[0])
+                                    }
+                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="flex flex-col">
+                                <label>อัพโหลดสมุดบัญชีธนาคาร</label>
+                                <input required onChange={(e) => {
+                                    const files = e.target.files
+                                    if (files) {
+                                        setBankImg(files[0])
+                                    }
+                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label>อัพโหลดบัตรประชาชน</label>
+                                <input required onChange={(e) => {
+                                    const files = e.target.files
+                                    if (files) {
+                                        setThai_id_img(files[0])
+                                    }
+                                }} type="file" className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                            <div className="flex flex-col">
+                                <label>ชื่อทีมของคุณ(En)</label>
+                                <input required value={team_name} onChange={(e) => {
+                                    setTeamName(e.target.value.replace(/[^a-zA-Z]/g, ""))
+                                }} className="border-b-[1px] outline-none p-[5px]"></input>
+                            </div>
+                        </div>
+
+                        <div className="mt-[10px] flex flex-col gap-[20px] justify-center items-center">
+                            <div className="flex flex-col">
+                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                    <input required type="radio" id="general" name="general" className="hidden peer"></input>
+                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="general"></label>
+                                    <p className="font-[light] text-[13px]">เงื่อนไข ทั่วไป</p>
+                                </div>
+                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                    <input required type="radio" id="privacy" name="privacy" className="hidden peer"></input>
+                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="privacy"></label>
+                                    <p className="font-[light] text-[13px]">เงื่อนไข Privacy by Design</p>
+                                </div>
+                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                    <input required type="radio" id="payment" name="payment" className="hidden peer"></input>
+                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="payment"></label>
+                                    <p className="font-[light] text-[13px]">เงื่อนไข การชำระเงิน</p>
+                                </div>
+                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                    <input required type="radio" id="ilegal" name="ilegal" className="hidden peer"></input>
+                                    <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="ilegal"></label>
+                                    <p className="font-[light] text-[13px]">เงื่อนไข กฏหมาย</p>
+                                </div>
+                            </div>
+                            <div onClick={()=>{
+                                setAgree(true)
                             }} className="w-[200px] cursor-pointer h-[40px] bg-blue-800 rounded-[8px] flex justify-center items-center text-white font-[medium]">
-                                <p>ยืนยัน</p>
+
+                                <p>ส่งข้อมูล</p>
                             </div>
                         </div>
                     </div>

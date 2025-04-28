@@ -79,7 +79,7 @@ const Dashboard = () => {
                         </div>
                         <div className="flex gap-[10px]">
                             <p className="font-[light] text-[14px]">จำนวนที่ซื้อสัญญาณ: </p>
-                            <p className="font-[light] text-[14px]">{orders_partner && orders_partner.length > 0 ? orders_partner.length : null} ครั้ง</p>
+                            <p className="font-[light] text-[14px]">{orders_partner && orders_partner.length > 0 ? orders_partner.length : '0'} ครั้ง</p>
                         </div>
                     </div>
 
