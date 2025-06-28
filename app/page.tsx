@@ -53,7 +53,7 @@ const Home = () => {
           <div className="grid-cols-3 grid gap-[10px] w-full cols-span-2 max-[1024px]:grid-cols-1">
             <div className="w-full border-[1px] rounded-[8px] h-[250px] shadow col-span-2">
               {/* <p>Test1</p> */}
-              <Carousel slide={true} slideInterval={3000} className="w-full h-full z-[-1]">
+              <Carousel slide={true} slideInterval={3000} className="w-full h-full z-[0]">
                 <img className="w-full h-full" src="/slide1.png"></img>
                 <img className="w-full h-full" src="/slide2.png"></img>
                 <img className="w-full h-full" src="/slide3.png"></img>

@@ -11,7 +11,7 @@ import { UserInterface } from "../Interfaces/UserInterface";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
-import { FaDiscord, FaFacebook, FaInstagram, FaTelegram, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaDiscord, FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa";
 
 const LeftSide = () => {
 
@@ -38,24 +38,26 @@ const LeftSide = () => {
     }
 
     return (
-        <div className="w-[200px] h-[calc(100vh-80px)] fixed left-0 top-[60px] bg-slate-900 max-[768px]:hidden flex flex-col justify-between">
+        <div className="w-[200px] h-[calc(100vh)] fixed left-0 top-[60px] bg-slate-900 max-[768px]:hidden flex flex-col justify-between">
             <div>
-                <div className="w-full p-[10px] bg-gradient-to-b from-blue-300 to-blue-900">
+                <div className="w-full p-[10px] bg-gradient-to-b from-black to-slate-900">
 
-                    <div className="flex flex-col justify-center items-center w-full h-[100px] pt-[30px] font-[medium]">
+                    {/* <div className="flex flex-col justify-center items-center w-full pt-[30px] font-[medium]">
                         <img className="rounded-full w-[80px]" src="/avatar.webp"></img>
                         <p className="text-white mt-[10px] text-[14px] font-[pbold]">{User?.username}</p>
-                    </div>
+                    </div> */}
 
                     <div className="flex flex-col justify-start mt-[30px] mb-[10px] items-start w-full pl-[20px] text-white font-[light] text-[12px]">
-                        <p className="font-[plight] text-[12px]">ID : {User?.id}</p>
-                        <p className="font-[plight] text-[12px]">{User?.email}</p>
-                        <p className="font-[plight] text-[12px]">Date : {User?.total_days}</p>
+                        <p className="font-[pmedium] text-[14px]">ID : {User?.id}</p>
+                        <p className="font-[plight] text-[14px]">{User?.email}</p>
+                        <p className="font-[plight] text-[14px]">Binary Days : {User?.binary_days}</p>
+                        <p className="font-[plight] text-[14px]">Forex Days : {User?.forex_days}</p>
+
                     </div>
 
                     <div className="flex justify-center">
-                        <div className="bg-black font-[pbold] rounded-[8px] flex justify-center items-center gap-[5px] p-[4px] text-[12px]">
-                            <p className="text-white">Status</p>
+                        <div className="bg-white font-[pbold] rounded-[8px] flex justify-center items-center gap-[5px] p-[4px] text-[12px]">
+                            <p className="text-black">Status</p>
                             <div className={`p-[3px] ${User?.role == 0 ? "bg-gray-500" : User?.role == 1 ? "bg-blue-700" : User?.role == 2 ? "bg-purple-500" : "Normal"} rounded-[4px]`}>
                                 <p className="text-white">{User?.role == 0 ? "Normal" : User?.role == 1 ? "Member" : User?.role == 2 ? "Admin" : "Normal"}</p>
                             </div>
@@ -63,7 +65,7 @@ const LeftSide = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-[300px] bg-slate-900 text-[14px] overflow-scroll">
+                <div className="w-full bg-slate-900 text-[14px] overflow-scroll">
                     <div onClick={() => {
                         navigate.push("/")
                     }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
@@ -127,7 +129,7 @@ const LeftSide = () => {
                                 toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), { pending: 'กำลังออกจากระบบ', success: 'ออกจากระบบสำเร็จ' }, { type: 'success', hideProgressBar: true, closeButton: false, position: 'bottom-right' })
                                 setTimeout(() => {
                                     localStorage.removeItem('token')
-                                    window.location.href = "https://outwittrader.com/landingpage"
+                                    window.location.href = "/landingpage"
                                 }, 1500)
                             }
                         })
@@ -139,7 +141,7 @@ const LeftSide = () => {
                 </div>
             </div>
 
-            <div className="w-full h-[60px] flex justify-center items-center gap-[5px] ">
+            <div className="w-full bottom-[80px] absolute flex justify-center items-center gap-[10px] ">
                 <FaDiscord onClick={() => {
                     window.open("https://discord.gg/MVj5YnsMNM", "_blank")
                 }} size={20} className="text-white cursor-pointer"></FaDiscord>

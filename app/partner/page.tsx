@@ -48,7 +48,7 @@ const Partner = () => {
                         <p>เกี่ยกับ OutwitTrader Partner</p>
                         <p>OutwiTrader และ Partner ได้รับการยอมรับว่าทำให้แคมเปญลูกค้าประสบความสำเร็จ</p>
                         <p>ได้สูงสุด กระตุ้นการเติบโตของลูกค้าโดยการดูแลแคมเปญรวมถึงแสดงทักษาและความ</p>
-                        <p>เชี่ยวชาญด้าน OutwiTrader ผ่านการรับรอง ได้รับค่าคอมมิชชั่นสูงถึง 70%</p>
+                        <p>เชี่ยวชาญด้าน OutwiTrader ผ่านการรับรอง ได้รับค่าคอมมิชชั่นสูงถึง 30%</p>
                     </div>
                     {user && user.length > 0 ?
                         <button disabled={user[0].status == 1 ? true : false} onClick={() => {

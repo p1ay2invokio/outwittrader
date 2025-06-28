@@ -5,5 +5,6 @@ export interface ProductInterface {
     price: number,
     days: number,
     img: string,
-    special: number
+    special: number,
+    type: String
 }

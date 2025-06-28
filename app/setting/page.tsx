@@ -54,8 +54,12 @@ const Setting = () => {
                                 <p className="font-[medium]">{User[0].username}</p>
                             </div>
                             <div className="font-[light] flex justify-between">
-                                <p className="text-[14px]">วันที่ใช้งานได้อีก (Available)</p>
-                                <p className="font-[medium]">{User[0].total_days} วัน</p>
+                                <p className="text-[14px]">Binary Days (Available)</p>
+                                <p className="font-[medium]">{User[0].binary_days} วัน</p>
+                            </div>
+                            <div className="font-[light] flex justify-between">
+                                <p className="text-[14px]">Forex Days (Available)</p>
+                                <p className="font-[medium]">{User[0].forex_days} วัน</p>
                             </div>
 
                             {User[0].referral_id ? <div className="font-[light] flex justify-between">

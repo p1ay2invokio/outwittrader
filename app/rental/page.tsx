@@ -17,6 +17,7 @@ import Back from '../Components/Back'
 import Image from 'next/image'
 import { IoArrowBackCircleSharp } from 'react-icons/io5'
 import LeftSide from '../Components/LeftSide'
+import { toast, Toaster } from 'react-hot-toast'
 
 dayjs.extend(relativeTime)
 
@@ -51,23 +52,35 @@ const RentSignal = () => {
 
   useEffect(() => {
     initial()
+
   }, [refresh])
+
+
+  useEffect(() => {
+    if (modal) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [modal])
 
   return (
     <div>
 
-      <Header/>
+      <Header />
 
       <LeftSide />
 
       {modal ? <div onClick={(e) => {
         if (e.target == e.currentTarget) {
           setModal(false)
+          setAgree(false)
         }
       }} className="w-full fixed top-[0px] h-[100vh] left-0 bg-black/60 flex justify-center items-center z-[10]">
         {!agree ? <div className="w-[600px] h-[550px] bg-white rounded-[8px] p-[20px] shadow-lg">
           <p className='font-[bold] mb-[5px]'>กฏกติกาการเช่าสัญญาณ</p>
-          <object data="./terms.pdf#toolbar=0" className="w-full h-[85%]"></object>
+          <iframe src='./terms.pdf' className='w-full h-[85%]'></iframe>
+          {/* <object data="./terms.pdf#toolbar=0" className="w-full h-[85%]"></object> */}
           <div className="flex gap-[5px]">
             <button onClick={() => {
               setAgree(true)
@@ -76,11 +89,11 @@ const RentSignal = () => {
               setModal(false)
             }} className="w-[100px] h-[35px] shadow-lg bg-orange-600 rounded-[4px] text-white mt-[10px] font-[medium]">ยกเลิก</button>
           </div>
-        </div> : <div className="w-[500px] h-[650px] bg-white shadow rounded-[8px] p-[20px] flex justify-center items-center flex-col max-[600px]:w-[350px]">
+        </div> : <div className="w-[500px] h-[650px] border-[1px] border-gray-400 bg-white shadow rounded-[8px] p-[20px] flex justify-center items-center flex-col max-[600px]:w-[350px]">
           <img src={specificProduct?.img} className='w-[250px] rounded-[8px] shadowf-lg mb-[5px]'></img>
           <hr className='border-[1px] w-full border-black/20 mb-[20px] mt-[20px]' />
           {specificProduct ? <div className='w-full flex justify-center flex-col items-center text-[14px]'>
-            <p className='font-[medium]'>{specificProduct.name}</p>
+            <p className='font-[medium]'>{specificProduct.name} ( {specificProduct.type == "B" ? "Binary Option" : specificProduct.type == "F" ? "Forex" : "Binary Option & Forex"} )</p>
             <p className='font-[light]'>{specificProduct.detail}</p>
             <p className='font-[medium]'>{specificProduct.price} บาท</p>
             <label className='w-[250px] h-[40px] flex justify-center items-center cursor-pointer border-[1px] border-black rounded-[4px] mt-[10px] mb-[10px]' htmlFor='upload-slip'>
@@ -89,7 +102,7 @@ const RentSignal = () => {
                 <p className='font-[light] text-[12px]'>ยังไม่ได้อัพโหลดไฟล์</p>
               </div>}
             </label>
-            <input id='upload-slip' onChange={async (e) => {
+            <input accept='image/*' id='upload-slip' onChange={async (e) => {
               const file = e.target.files
               if (file) {
                 // console.log(e.target.files)
@@ -108,7 +121,7 @@ const RentSignal = () => {
               if (slip) {
                 Swal.fire({ title: `สั่งซื้อ ${specificProduct.name}`, confirmButtonText: 'ยืนยัน', showConfirmButton: true, showCancelButton: true }).then((res) => {
                   if (res.isConfirmed) {
-                    new ProductMethod().purchaseProduct(specificProduct.id, slip).then((res) => {
+                    new ProductMethod().purchaseProduct(specificProduct.id, slip, specificProduct.type).then((res) => {
                       console.log(res)
                       if (res.purchased) {
                         Swal.fire({ title: 'สั่งซื้อสำเร็จ', icon: 'success' })
@@ -119,7 +132,8 @@ const RentSignal = () => {
                   }
                 })
               } else {
-                Swal.fire("กรุณาอัพโหลดสลิป")
+                toast.error("กรุณาอัพโหลดสลิป")
+                // Swal.fire("กรุณาอัพโหลดสลิป")
               }
             }} className='w-[100px] h-[40px] font-[medium] bg-green-700 text-white rounded-[8px] mt-[10px]'>สั่งซื้อ</button>
           </div> : null}
@@ -148,9 +162,12 @@ const RentSignal = () => {
 
           <div className="grid grid-cols-3 gap-[20px] mt-[20px] max-[1400px]:grid-cols-2 max-[1080px]:grid-cols-1">
             {products && products.length > 0 ? products.map((item) => {
+
+              // console.log(item)
+
               return (
                 <div key={item.id} className="flex flex-col gap-[10px]">
-                  <div className="w-[300px] h-[300px] bg-white shadow-lg rounded-[8px] p-[10px] relative">
+                  <div className="w-[300px] h-[300px] bg-white border-[1px] border-gray-200 shadow-lg rounded-[8px] p-[10px] relative">
                     {item.special ? <p className='p-[5px] bg-gradient-to-tr from-yellow-300 to-purple-300 absolute right-0 top-0 text-white rounded-l-[8px] font-[bold]'>พิเศษ</p> : null}
                     <div className='w-full h-[200px] flex justify-center items-center'>
                       <Image alt="." width={300} height={200} src="/signal.webp" className="w-full h-full object-cover rounded-[8px]"></Image>
@@ -160,7 +177,10 @@ const RentSignal = () => {
                     </div>
                     <div className='flex justify-between mt-[10px]'>
 
-                      <p className='font-[light] text-[14px]'>{item.name}</p>
+                      <div className='flex flex-col'>
+                        <p className='font-[light] text-[14px]'>{item.name}</p>
+                        <p className='font-[medium] mt-[-2px] text-[12px]'>{item.type == "B" ? "Binary Option" : item.type == "F" ? "Forex" : item.type == "BF" ? "Binary Option & Forex" : null}</p>
+                      </div>
                       <div className=' flex-col flex justify-end items-end'>
                         <p className='font-[light] text-[14px]'>ระยะเวลา {item.days} วัน</p>
                         <p className='font-[light] text-[14px]'>ราคา {item.price.toLocaleString('TH')} บาท</p>
@@ -227,6 +247,8 @@ const RentSignal = () => {
           </tbody>
         </table>
       </div>
+
+      <Toaster></Toaster>
     </div>
   )
 }

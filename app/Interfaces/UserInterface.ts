@@ -20,4 +20,6 @@ export interface UserInterface {
     thai_id_img: string,
     team_id: number,
     referral_id: number,
+    binary_days: number
+    forex_days: number
 }

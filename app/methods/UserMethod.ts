@@ -52,6 +52,9 @@ export class UserMethod {
                 }
             }).then((res) => {
                 resolve(res.data)
+            }).catch((err)=>{
+                localStorage.removeItem("token")
+                window.location.href = "/landingpage"
             })
         })
     }
@@ -103,6 +106,14 @@ export class UserMethod {
                 days: days,
                 user_id: user_id
             }).then((res) => {
+                resolve(res.data)
+            })
+        })
+    }
+
+    public getDashboard=():Promise<number>=>{
+        return new Promise((resolve)=>{
+            axios.get(`${END_POINT}/dashboard`).then((res)=>{
                 resolve(res.data)
             })
         })
