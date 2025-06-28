@@ -38,6 +38,8 @@ const Forex = () => {
     const [user, setUser] = useState<UserInterface | null>(null)
 
     const [loadData, setLoadData] = useState<boolean>(true)
+    const [selectDate, setSelectDate] = useState<string>('')
+    const [refresh, setRefresh] = useState<number>(0)
 
     let now = dayjs().format()
 
@@ -47,7 +49,7 @@ const Forex = () => {
 
         if(token){
             let response_user = jwtDecode(token) as UserInterface
-            // console.log(user)
+            console.log(response_user)
             setUser(response_user)
         }
 
@@ -66,7 +68,7 @@ const Forex = () => {
         console.log(convertData)
         console.log(convert_today)
         let dataList = convertData.filter((item: ForexInterface) => {
-            return item.date.includes(convert_today)
+            return item.date.includes(selectDate ? selectDate : convert_today)
         })
 
         // console.log(convertData)
@@ -78,7 +80,7 @@ const Forex = () => {
 
     useEffect(() => {
         initial()
-    }, [])
+    }, [selectDate, refresh])
 
 
     if(loadData){
@@ -117,13 +119,19 @@ const Forex = () => {
 
             <div className="flex flex-col justify-center items-center mb-20 mt-16">
                 <div className="flex items-center gap-[10px] mb-[10px]">
-                    <p className="font-[medium]">วันที่ : {now.split("T")[0]}</p>
+                    {/* <p className="font-[medium]">วันที่ : {now.split("T")[0]}</p> */}
+                    <label className="font-[medium]">วันที่</label>
+                    <input value={!selectDate ? now.split("T")[0] : selectDate} onChange={(e)=>{
+                        console.log(e.target.value)
+                        setSelectDate(e.target.value)
+                    }} type="date"></input>
                     
                     {user && user.role == 2 ? <div onClick={async()=>{
                         let data:any = await new NewsMethod().updateForex()
 
                         if(data.updateForexNews){
                             Swal.fire("อัพเดทข่าวสาร Forex Factory สำเร็จ")
+                            setRefresh(refresh+1)
                         }else{
                             Swal.fire("บางอย่างผิดพลาดรอ 5 นาทีแล้วกด refresh ใหม่")
                         }

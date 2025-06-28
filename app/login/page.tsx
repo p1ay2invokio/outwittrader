@@ -55,8 +55,8 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className="flex justify-center items-center h-[calc(100vh-100px)]">
-                <div className="w-[400px] h-[350px] flex-col bg-white rounded-[12px] shadow-xl flex justify-center p-[20px] max-[400px]:w-[350px]">
+            <div className="flex justify-center items-center h-[calc(100vh)]">
+                <div className="w-[400px] h-[350px] border-[1px] border-gray-300 flex-col bg-white rounded-[12px] shadow-xl flex justify-center p-[20px] max-[400px]:w-[350px]">
                     <div className="flex justify-between">
                         <div>
                             <p className="font-[bold] text-[20px]">เข้าสู่ระบบ</p>

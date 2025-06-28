@@ -55,10 +55,13 @@ const Signal = () => {
                         </div>
                     </div>
 
-                    <div className="w-full flex justify-center">
+                    <div className="w-full flex justify-center flex-col">
 
 
-                        <div className="grid grid-cols-4 w-[1400px] place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px] max-[380px]:grid-cols-1">
+                        <p className="text-center font-[pbold] text-[22px] mb-5">Binary Option</p>
+
+
+                        <div className="grid grid-cols-4 bg-gray-100 p-2 border-[1px] shadow rounded-xl border-gray-300 place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px] max-[380px]:grid-cols-1">
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 1 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
@@ -66,7 +69,7 @@ const Signal = () => {
                                 </div>
                                 <div onClick={async () => {
                                     if (detailUser && detailUser.length > 0) {
-                                        if (detailUser[0].total_days > 0) {
+                                        if (detailUser[0].binary_days > 0) {
                                             navigate.push('/room_first')
                                         } else {
                                             Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
@@ -82,7 +85,7 @@ const Signal = () => {
                             </div>
                             <div onClick={async () => {
                                 if (detailUser && detailUser.length > 0) {
-                                    if (detailUser[0].total_days > 0) {
+                                    if (detailUser[0].binary_days > 0) {
                                         navigate.push('/room_second')
                                     } else {
                                         Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
@@ -108,8 +111,18 @@ const Signal = () => {
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/5.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
-                                <div onClick={()=>{
-                                    window.open("https://t.me/+z-qnsbXu4dI4ZTU1", "_blank")
+                                <div onClick={() => {
+                                    if (detailUser && detailUser.length > 0) {
+                                        if (detailUser[0].binary_days > 0) {
+                                            window.open("https://t.me/+z-qnsbXu4dI4ZTU1", "_blank")
+                                        } else {
+                                            Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
+                                                if (res.isConfirmed) {
+                                                    navigate.push('/rental')
+                                                }
+                                            })
+                                        }
+                                    }
                                 }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
@@ -120,12 +133,23 @@ const Signal = () => {
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
                                     <Image alt="." width={300} height={200} src="/6.webp" className="w-full h-full rounded-[8px]"></Image>
                                 </div>
-                                <div onClick={()=>{
-                                    window.open("https://t.me/+IBa8IS7ZoZ05M2M1", "_blank")
+                                <div onClick={() => {
+                                    if (detailUser && detailUser.length > 0) {
+                                        if (detailUser[0].binary_days > 0) {
+                                            window.open("https://t.me/+IBa8IS7ZoZ05M2M1", "_blank")
+                                        } else {
+                                            Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
+                                                if (res.isConfirmed) {
+                                                    navigate.push('/rental')
+                                                }
+                                            })
+                                        }
+                                    }
                                 }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
                                 </div>
                             </div>
+
                             {/* <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">ข่าวประจำวัน</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
@@ -148,6 +172,57 @@ const Signal = () => {
                                     <p className="font-[medium] text-white text-[16px]">เข้าดูคอร์ส</p>
                                 </div>
                             </div> */}
+                        </div>
+
+                        <div className="w-full text-center mb-5">
+
+                            <p className="font-[pbold] text-[22px] mb-5">Forex</p>
+
+                            <div className="grid grid-cols-4 gap-4 w-full shadow bg-gray-100 p-2 border-[1px] rounded-xl border-gray-300">
+                                <div className="w-full flex flex-col items-center">
+                                    <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ Forex</p>
+                                    <div className="w-full h-[200px] shadow-lg rounded-[8px]">
+                                        <Image alt="." width={300} height={200} src="/6.webp" className="w-full h-full rounded-[8px]"></Image>
+                                    </div>
+                                    <div onClick={() => {
+                                        if (detailUser && detailUser.length > 0) {
+                                            if (detailUser[0].forex_days > 0) {
+                                                window.open("https://t.me/+IBa8IS7ZoZ05M2M1", "_blank")
+                                            } else {
+                                                Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
+                                                    if (res.isConfirmed) {
+                                                        navigate.push('/rental')
+                                                    }
+                                                })
+                                            }
+                                        }
+                                    }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
+                                        <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
+                                    </div>
+                                </div>
+
+                                <div className="w-full flex flex-col items-center">
+                                    <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ Forex Telegram</p>
+                                    <div className="w-full h-[200px] shadow-lg rounded-[8px]">
+                                        <Image alt="." width={300} height={200} src="/6.webp" className="w-full h-full rounded-[8px]"></Image>
+                                    </div>
+                                    <div onClick={() => {
+                                        if (detailUser && detailUser.length > 0) {
+                                            if (detailUser[0].forex_days > 0) {
+                                                window.open("https://t.me/+IBa8IS7ZoZ05M2M1", "_blank")
+                                            } else {
+                                                Swal.fire("กรุณาเช่าสัญญาณก่อน!", "", "info").then((res) => {
+                                                    if (res.isConfirmed) {
+                                                        navigate.push('/rental')
+                                                    }
+                                                })
+                                            }
+                                        }
+                                    }} className="w-[70%] cursor-pointer h-[40px] bg-gradient-to-b from-blue-500 to-blue-700 rounded-full flex justify-center items-center mt-[10px]">
+                                        <p className="font-[medium] text-white text-[16px]">เข้าดูสัญญาณ</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

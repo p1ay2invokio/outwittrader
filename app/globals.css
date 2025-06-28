@@ -61,6 +61,7 @@ html {
     scroll-behavior: smooth;
     /* overflow: hidden */
     overscroll-behavior: none;
+    background-color: #f9fafb;
 }
 
 * {

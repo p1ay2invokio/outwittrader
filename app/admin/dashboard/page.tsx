@@ -8,6 +8,9 @@ import { UserMethod } from "@/app/methods/UserMethod"
 import { END_POINT } from "@/config"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { BiSolidBusiness } from "react-icons/bi"
+import { FaBox, FaBusinessTime, FaUser } from "react-icons/fa"
+import { RiTeamFill } from "react-icons/ri"
 import Swal from "sweetalert2"
 
 const AdminDashboard = () => {
@@ -27,6 +30,10 @@ const AdminDashboard = () => {
 
     const [brokerLink, setBrokerLink] = useState<string>('')
     const [refresh, setRefresh] = useState<number>(0)
+
+    const [recap, setRecap] = useState<boolean>(false)
+
+    const [dashboard_detail, setDashboardDetail] = useState<any>(null)
 
     const updateDays = async () => {
         await new UserMethod().updateDays(Number(days), Number(searchUser)).then((res) => {
@@ -50,6 +57,9 @@ const AdminDashboard = () => {
 
     // console.log(END_POINT.split('/api')[0])
 
+
+
+
     // useEffect(() => {
     //     getRegisterPartner()
     // }, [])
@@ -58,13 +68,39 @@ const AdminDashboard = () => {
         <div className="pl-[280px] pt-[100px] pr-[50px] max-[768px]:pl-[20px]">
 
 
+            {recap ? <div onClick={(e) => {
+                if (e.target == e.currentTarget) {
+                    setRecap(false)
+                }
+            }} className="w-full h-full fixed top-0 left-0 bg-black/50 z-[7] flex justify-center items-center flex-col gap-[20px]">
+                <div className="w-[80%] h-[90vh] bg-white shadow-sm rounded-[4px] grid grid-cols-4 gap-[20px] p-[20px] overflow-scroll max-[1280px]:grid-cols-3 max-[845px]:grid-cols-2 max-[768px]:grid-cols-1">
+                    <div className="w-[100%] h-[100px] bg-blue-200 border border-blue-300/50 rounded-lg flex justify-center items-center relative overflow-hidden">
+                        <FaUser className="absolute left-[20px] bottom-[-10px] text-white" size={100} />
+                        <p className="font-[bold] text-[24px] text-black z-[1]">ผู้ใช้: {dashboard_detail?.users_count}</p>
+                    </div>
+                    <div className="w-[100%] h-[100px] bg-blue-200 border border-blue-300/50 rounded-lg flex justify-center items-center relative overflow-hidden">
+                        <BiSolidBusiness className="absolute left-[10px] bottom-[-20px] text-white" size={120} />
+                        <p className="font-[bold] text-[24px]  text-black z-[1]">ทีมทั้งหมด: {dashboard_detail?.team_verified}</p>
+                    </div>
+                    <div className="w-[100%] h-[100px] bg-blue-200 border border-blue-300/50 rounded-lg flex justify-center items-center relative overflow-hidden">
+                    <FaBusinessTime className="absolute left-[10px] bottom-[-20px] text-white" size={120} />
+                        <p className="font-[bold] text-[24px] text-black z-[1]">ทีมรอการยืนยัน: {dashboard_detail?.team_waiting}</p>
+                    </div>
+                    <div className="w-[100%] h-[100px] bg-blue-200 border border-blue-300/50 rounded-lg flex gap-[10px] justify-center items-center relative overflow-hidden">
+                        <FaBox className="absolute left-[10px] bottom-[-10px] text-white" size={100}/>
+                        <p className="font-[bold] text-[24px] text-black z-[1]">ออเดอร์: {dashboard_detail?.order_count}</p>
+                    </div>
+                </div>
+            </div> : null}
+
+
             {modalPartner ? <div onClick={(e) => {
                 if (e.target == e.currentTarget) {
                     setModalPartner(false)
                 }
             }} className="w-full h-full fixed top-0 left-0 bg-black/50 z-[7] flex justify-center items-center flex-col gap-[20px]">
                 <div className="w-[80%] h-[90vh] bg-white shadow-sm rounded-[4px] grid grid-cols-4 gap-[20px] p-[20px] overflow-scroll">
-                    {partners && partners.length > 0 ? partners.map((item:PartnerInterface, index:number) => {
+                    {partners && partners.length > 0 ? partners.map((item: PartnerInterface, index: number) => {
                         return (
                             <div key={index} className="w-full border-[1px] shadow-sm border-b-[3px] border-b-blue-600 rounded-[4px] p-[10px] text-[14px]">
 
@@ -93,24 +129,24 @@ const AdminDashboard = () => {
                                     setBrokerLink(e.target.value)
                                 }} className="w-full h-[40px] rounded-[4px] text-center font-[light] outline-none border-b-[2px]" placeholder="ใส่ลิ้งโบรกเกอร์ที่ (Generate)"></input>
 
-                                <button onClick={async()=>{
-                                    if(brokerLink){
-                                        await new TeamMethod().verifyTeamPartner(item.team_id, brokerLink).then(async(res)=>{
-                                            if(res.verified){
+                                <button onClick={async () => {
+                                    if (brokerLink) {
+                                        await new TeamMethod().verifyTeamPartner(item.team_id, brokerLink).then(async (res) => {
+                                            if (res.verified) {
                                                 Swal.fire(`Verified ${item.team_name} สำเร็จ`, "", "success")
                                                 const updated_data = await new TeamMethod().allRegisterPartner()
                                                 setPartners(updated_data)
                                             }
                                         })
-                                    }else{
+                                    } else {
                                         Swal.fire("กรุณาใส่ลิ้งโบรกเกอร์ก่อน", "", "error")
                                     }
                                 }} className="w-full h-[40px] bg-green-600 rounded-[4px] mt-[5px] text-white font-[medium]">Verify</button>
                             </div>
                         )
                     }) : <div className="h-full w-full flex justify-center items-center font-[light] text-[14px] col-span-4">
-                            <p>Not Found Registered Team 😂</p>
-                        </div>}
+                        <p>ไม่พบทีมที่สมัคร :)</p>
+                    </div>}
                 </div>
             </div> : null}
 
@@ -161,7 +197,7 @@ const AdminDashboard = () => {
             <Header />
             <LeftSide />
 
-            <div className="w-full h-[calc(90vh-100px)] border-[1px] rounded-[8px] p-[10px] flex gap-[20px]">
+            <div className="w-full h-[calc(90vh-100px)] border-[1px] rounded-[8px] p-[10px] flex gap-[20px] shadow-sm">
                 <button onClick={() => {
                     setModal(true)
                 }} className="p-[10px] h-[40px] bg-white rounded-[4px] shadow-md border-l-[10px] border-blue-800">
@@ -181,7 +217,19 @@ const AdminDashboard = () => {
                     <p className="font-[medium]">Partner Checking</p>
 
                 </button>
+
+                <button onClick={async () => {
+                    const res = await new UserMethod().getDashboard()
+                    console.log(res)
+                    setDashboardDetail(res)
+                    setRecap(true)
+                }} className="p-[10px] h-[40px] bg-white rounded-[4px] shadow-md border-l-[10px] border-green-800">
+                    <p className="font-[medium]">สรุปข้อมูลของเว็บไซต์</p>
+
+                </button>
+
             </div>
+
 
         </div>
     )

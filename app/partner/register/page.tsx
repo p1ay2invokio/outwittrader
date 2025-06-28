@@ -250,22 +250,26 @@ const Register = () => {
                                 <div className="flex gap-[10px] items-center mt-[10px]">
                                     <input required type="radio" id="general" name="general" className="hidden peer"></input>
                                     <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="general"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข ทั่วไป</p>
+                                    <p onClick={()=>{
+                                        window.open('/general.pdf')
+                                    }} className="font-[light] text-[13px] underline cursor-pointer">เงื่อนไข ทั่วไป</p>
                                 </div>
-                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                {/* <div className="flex gap-[10px] items-center mt-[10px]">
                                     <input required type="radio" id="privacy" name="privacy" className="hidden peer"></input>
                                     <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="privacy"></label>
                                     <p className="font-[light] text-[13px]">เงื่อนไข Privacy by Design</p>
-                                </div>
-                                <div className="flex gap-[10px] items-center mt-[10px]">
+                                </div> */}
+                                {/* <div className="flex gap-[10px] items-center mt-[10px]">
                                     <input required type="radio" id="payment" name="payment" className="hidden peer"></input>
                                     <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="payment"></label>
                                     <p className="font-[light] text-[13px]">เงื่อนไข การชำระเงิน</p>
-                                </div>
+                                </div> */}
                                 <div className="flex gap-[10px] items-center mt-[10px]">
                                     <input required type="radio" id="ilegal" name="ilegal" className="hidden peer"></input>
                                     <label className="w-[20px] h-[17px] rounded-[4px] border-[1px] bg-gray-50 cursor-pointer peer-checked:bg-green-500" htmlFor="ilegal"></label>
-                                    <p className="font-[light] text-[13px]">เงื่อนไข กฏหมาย</p>
+                                    <p onClick={()=>{
+                                        window.open('/law.pdf')
+                                    }} className="font-[light] text-[13px] underline cursor-pointer">เงื่อนไข กฏหมาย</p>
                                 </div>
                             </div>
                             <div onClick={()=>{

@@ -9,6 +9,7 @@ import { RiTimeZoneFill } from "react-icons/ri";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import LeftSide from "@/app/Components/LeftSide";
+import { MdCardMembership } from "react-icons/md";
 
 
 const GuideBook = () => {
@@ -21,32 +22,38 @@ const GuideBook = () => {
         {
             id: 0,
             title: 'วิธีการเช่าซื้อสัญญาณ Outwit Signal',
-            embed: 'tW13N4Hll88',
+            embed: 'OgJaEs1yCNk',
             logo: <FaSignal className="text-white" />
         },
         {
             id: 1,
             title: 'วิธีเปิดจอสัญญาณ Outwit Signal บน iOS',
-            embed: 'V47CdOCDo4s',
+            embed: 'FZ7SHDhqb1Q',
             logo: <SiIos size={20} className="text-white" />
         },
         {
             id: 2,
             title: 'วิธีเปิดจอสัญญาณ Outwit Signal บน Android',
-            embed: 'a1wW0AjQCI8',
+            embed: 'HI25vZDoEiY',
             logo: <IoLogoAndroid size={20} className="text-white" />
         },
+        // {
+        //     id: 3,
+        //     title: 'วิธีการเช็ค Time Zone ก่อนเทรด',
+        //     embed: 'Gxkfp7iYjW8',
+        //     logo: <RiTimeZoneFill size={20} className="text-white" />
+        // },
         {
             id: 3,
-            title: 'วิธีการเช็ค Time Zone ก่อนเทรด',
-            embed: 'Gxkfp7iYjW8',
-            logo: <RiTimeZoneFill size={20} className="text-white" />
+            title: 'วิธีการใช้งานสัญญาณ Outwit Signal (พื้นฐาน)',
+            embed: 'TYb8qGNF8Is',
+            logo: <FaChalkboardTeacher size={20} className="text-white" />
         },
         {
             id: 4,
-            title: 'วิธีการใช้งานสัญญาณ Outwit Signal (พื้นฐาน)',
-            embed: 'XqQMisU5En8',
-            logo: <FaChalkboardTeacher size={20} className="text-white" />
+            title: 'วิธีสมัครสมาชิก OutwitTrader Sig Nal',
+            embed: 'YgzNoOdYq2U',
+            logo: <MdCardMembership size={20} className="text-white" />
         },
     ]
 

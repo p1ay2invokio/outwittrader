@@ -17,11 +17,11 @@ const Room = () => {
 
     let navigate = useRouter()
 
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);    
     const [joinURL, setJoinURL] = useState<any>('')
     const [user, setUser] = useState<UserInterface[]>([])
 
-    const joinMeeting = async (token: string) => {
+    const joinMeeting = async (token: string) => {  
         const user_res = await new UserMethod().getUserAccounts(token)
 
         if (user_res) {

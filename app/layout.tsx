@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "OutwitTrader",
   description: "ผู้ให้บริการปล่อยเช่าสัญญาณ",
   icons: {
-    icon: '/logo.ico'
+    icon: '/outwit.png'
   }
 };
 
@@ -29,12 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="w-full">
-      {/* <link rel="icon" href="logo.ico" /> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Footer />
       </body>
 
     </html>
