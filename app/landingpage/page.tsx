@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Header from "../Components/Header"
 import { Howl, Howler } from 'howler'
 import { FcBullish, FcDocument, FcRefresh, FcTimeline } from "react-icons/fc"
@@ -55,21 +55,32 @@ const LandingPage = () => {
     const news = useRef(null)
     const isInNews = useInView(news, { once: true })
 
+    const [switchs, setSwitchs] = useState(false)
+
+    useEffect(()=>{
+        let timer = setInterval(()=>{
+            console.log(switchs)
+            setSwitchs((prev)=> !prev)
+        }, 3000)
+
+        return ()=> clearInterval(timer)
+    }, [])
+
     return (
         <div className="">
             <HeaderLanding />
 
 
-            <div className="w-full h-[120vh] bg-[rgb(24,24,24)] flex justify-center items-center max-[1280px]:h-[180vh] max-[640px]:h-[210vh]">
-                <div className="grid grid-cols-2 place-items-center pl-20 pr-20 pt-20 max-[1280px]:grid-cols-1 max-[1280px]:gap-[40px] max-[640px]:place-items-start">
+            <div className="w-full  bg-[rgb(24,24,24)] flex justify-center items-center max-[800px]:pt-[100px]">
+                <div className="grid grid-cols-2 place-items-center pl-20 pr-20 pt-20 max-[800px]:p-0 max-[1280px]:grid-cols-1 max-[1280px]:gap-[40px] max-[640px]:place-items-start">
                     <div className="max-[1280px]:order-2">
                         <div className="max-[640px]:w-[300px]">
                             <div className="flex items-baseline gap-5 max-[640px]:flex-col">
-                                <div className="flex text-[50px] text-blue-600">
+                                <div className="flex text-[50px] text-blue-600 max-[600px]:text-[45px]">
                                     <p className="font-[regular]">OUTWIT</p>
                                     <p className="font-[bold]">TRADER</p>
                                 </div>
-                                <p className="text-blue-600 text-[55px] font-[pbold] max-[640px]:mt-[-40px]">Sig-Nal</p>
+                                <p className="text-blue-600 text-[55px] font-[pbold] max-[600px]:text-[50px] max-[640px]:mt-[-40px]">Sig-Nal</p>
                             </div>
                             <p className="text-white text-[40px] font-[bold]">การเริ่มต้นสู่โลกของการเทรด</p>
                             <p className="text-white text-[30px] font-[bold]">กับแพลตฟอร์มที่คาดการณ์เข้าซื้อขายได้ดีที่สุด</p>
@@ -116,38 +127,40 @@ const LandingPage = () => {
 
                     </div>
 
-                    <div className="relative">
+                    <div className="relative ">
 
-                        <motion.img className="absolute w-[110px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1 } }} src="japan.webp"></motion.img>
+                        {/* <motion.img className="absolute w-[110px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1 } }} src="japan.webp"></motion.img>
                         <motion.img className="absolute right-0 w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.2 } }} src="us.webp"></motion.img>
                         <motion.img className="absolute bottom-0 w-[100px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.4 } }} src="swe.webp"></motion.img>
                         <motion.img className="absolute top-[200px] left-[-120px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.6 } }} src="star.webp"></motion.img>
                         <motion.img className="absolute top-[400px] right-[-40px] w-[60px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.8 } }} src="tesla.webp"></motion.img>
                         <motion.img className="absolute top-[400px] left-[-100px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.0 } }} src="apple.webp"></motion.img>
-                        <motion.img className="absolute top-[600px] right-[0px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.2 } }} src="nvidia.webp"></motion.img>
+                        <motion.img className="absolute top-[600px] right-[0px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.2 } }} src="nvidia.webp"></motion.img> */}
 
 
 
-                        <motion.div initial={{ x: -100 }} animate={{ x: 0 }} transition={{ duration: 1 }} className="flex flex-col gap-3 absolute bottom-20 z-[10]">
+                        <motion.div initial={{ x: -100 }} animate={{ x: 0 }} transition={{ duration: 1 }} className="flex flex-col gap-3 absolute bottom-20 z-[10] max-[600px]:left-[100px]">
                             {lists.map((item, index) => {
                                 console.log(index)
 
                                 return (
-                                    <motion.div key={index} initial={{ x: 0, opacity: 0 }} animate={{ x: index * -15, opacity: 1 }} transition={{ delay: index * 0.1 }} className={`p-3 w-[200px] h-[50px] flex justify-center items-center text-white from-blue-600 to-blue-600/20 bg-gradient-to-t rounded-xl skew-y-6 shadow z-[11] cursor-pointer`}>
-                                        <p className="font-[bold] text-[20px]">{item}</p>
+                                    <motion.div key={index} initial={{ x: 0, opacity: 0 }} animate={{ x: index * -15, opacity: 1 }} transition={{ delay: index * 0.1 }} className={`p-3 w-[200px] h-[50px] flex justify-center items-center text-white from-blue-600 to-blue-600/20 bg-gradient-to-t rounded-xl skew-y-6 shadow z-[11] cursor-pointer max-[800px]:w-[150px] max-[600px]:w-[100px] max-[600px]:h-[40px]`}>
+                                        <p className="font-[bold] text-[20px] max-[800px]:text-[16px] max-[600px]:text-[14px]">{item}</p>
                                     </motion.div>
                                 )
                             })}
                         </motion.div>
 
-                        <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="left-[0px] top-[0px] absolute z-0" src="/ef.png"></motion.img>
+                        {/* <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="left-[0px] top-[0px] absolute z-0" src="/ef.png"></motion.img> */}
                         {/* <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="left-[-00px] bottom-[-100px] absolute z-0" src="/ef.png"></motion.img> */}
-                        <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="left-[0px] bottom-[-100px] absolute z-0" src="/ef.png"></motion.img>
+                        {/* <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="left-[0px] bottom-[-100px] absolute z-0" src="/ef.png"></motion.img> */}
 
 
+                        <div className="w-[500px] max-[800px]:w-[380px]">
+                            <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="w-full h-full z-[999]" src="/iphone.webp"></motion.img>
 
-                        <motion.img initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="w-[500px] z-[0] relative" src="/iphone.webp"></motion.img>
-                        <motion.img initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="w-[350px] absolute right-[-50px] bottom-[70px] z-10" src="/displayright.webp"></motion.img>
+                        </div>
+                        <motion.img initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="w-[350px] absolute right-[-50px] bottom-[70px] z-10 max-[800px]:w-[180px] max-[600px]:right-[20px]" src="/displayright.webp"></motion.img>
                     </div>
                 </div>
             </div>
@@ -242,12 +255,12 @@ const LandingPage = () => {
             <motion.div className="w-full bg-[rgb(24,24,24)] pt-40">
                 <div className="flex justify-center items-center gap-20 max-[1280px]:flex-col max-[1280px]:pt-10">
                     <motion.div ref={ref} animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -200 }} transition={{ duration: 2, type: 'spring' }} className="relative">
-                        <span className="absolute right-10 top-0 flex size-10">
+                        {/* <span className="absolute right-10 top-0 flex size-10">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
                             <span className="relative inline-flex size-10 rounded-full bg-blue-500"></span>
-                        </span>
-                        <img className="w-[600px]" src="/mul-sig.png"></img>
-                        {/* <motion.img animate={{opacity: [0, 1, 0]}} transition={{duration: 3}} className="w-[600px]" src="/one-sig.png"></motion.img> */}
+                        </span> */}
+                        <motion.img initial={{opacity: 0}} animate={!switchs ? {opacity: 1} : {opacity: 0}} className="w-[600px]" src="/mul-sig.png"></motion.img>
+                        <motion.img initial={{opacity: 0}} animate={switchs ? {opacity: 1} : {opacity: 0}} className="w-[600px] absolute top-0" src="/one-sig.png"></motion.img>
                     </motion.div>
                     <div className="grid grid-cols-2 gap-3 max-[640px]:grid-cols-1">
                         <motion.div ref={box} animate={boxInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} transition={{ duration: 2, type: 'spring' }} className="w-[300px] h-[120px] bg-[rgb(42,42,42)] rounded-xl border-[1px] border-gray-600 flex items-center justify-center gap-10 ">
@@ -312,11 +325,11 @@ const LandingPage = () => {
                     <p className="font-[light] text-gray-400">เติบโตในสังคมของนักเทรด ด้วยคำแนะนำจากผู้เชี่ยวชาญ</p>
 
 
-                    <div className=" grid grid-cols-3 max-[1400px]:grid-cols-2 max-[1000px]:grid-cols-1 items-baseline gap-[20px] place-items-start pl-[100px] pr-[100px] pt-[30px]">
+                    <div className=" grid grid-cols-3 max-[1400px]:grid-cols-2 max-[1000px]:grid-cols-1 items-baseline gap-[20px] place-items-start pl-[100px] pr-[100px] max-[600px]:pl-[10px] max-[600px]:pr-[10px] pt-[30px]">
                         {news_list.map((item: any, index: number) => {
                             return (
                                 <div className="flex flex-col gap-3" key={index}>
-                                    <div className="h-[200px] w-[400px] rounded-xl ">
+                                    <div className="h-[200px] w-full rounded-xl ">
                                         <img className="w-full border-r-[2px] border-blue-600 h-full object-cover rounded-xl" src={item.img}></img>
 
                                     </div>
@@ -329,7 +342,7 @@ const LandingPage = () => {
             </div>
 
 
-            <div className="h-[70vh] bg-[rgb(20,20,20)] grid grid-cols-2 p-20 gap-x-[100px]">
+            <div className=" bg-[rgb(20,20,20)] grid grid-cols-2 p-20 gap-x-[100px] max-[800px]:p-2 max-[600px]:grid-cols-1 max-[600px]:gap-5">
                 <div className="space-y-[-5px] text-white gap-3 flex flex-col">
                     <div className="flex gap-3">
                         <img className="w-[40px] h-[40px]" src="/images/logo.webp"></img>
@@ -353,21 +366,21 @@ const LandingPage = () => {
 
                 <div className="grid grid-cols-3 ">
                     <div>
-                        <p className="font-[medium] text-blue-600 text-[22px]">หน้าหลัก</p>
+                        <p className="font-[medium] text-blue-600 text-[22px] max-[1000px]:text-[18px]">หน้าหลัก</p>
                         <div className="text-gray-300 font-[light] mt-3">
                             <p>เข้าสู่ระบบ</p>
                             <p>สมัครสมาชิก</p>
                         </div>
                     </div>
                     <div>
-                        <p className="font-[medium] text-blue-600 text-[22px]">การซื้อขาย</p>
+                        <p className="font-[medium] text-blue-600 text-[22px] max-[1000px]:text-[18px]">การซื้อขาย</p>
                         <div className="text-gray-300 font-[light] mt-3">
                             <p>ประเภทบัญชี</p>
                             <p>คำถามที่พบบ่อย</p>
                         </div>
                     </div>
                     <div>
-                        <p className="font-[medium] text-blue-600 text-[22px]">ชุมชน</p>
+                        <p className="font-[medium] text-blue-600 text-[22px] max-[1000px]:text-[18px]">ชุมชน</p>
                         <div className="text-gray-300 font-[light] mt-3">
                             <p>เกี่ยวกับเรา</p>
                             <p>ระเบียบข้อบังคับ</p>

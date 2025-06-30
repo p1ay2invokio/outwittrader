@@ -130,14 +130,14 @@ const HeaderLanding = () => {
             <div className={`w-full text-white  h-[80px] ${scroll ? 'bg-black/80' : 'bg-black/0'} duration-100  flex items-center p-[20px] justify-between fixed top-0 left-0 z-[20]`}>
 
 
-                <div>
+                <div className="max-[600px]:hidden">
                     <img className="w-[40px]" src="/flag.png"></img>
                 </div>
 
                 <div onClick={() => {
                     navigate.push("/")
                 }} className="flex justify-center items-center gap-[10px] cursor-pointer">
-                    <img className="w-[40px]" src="/images/logo.webp"></img>
+                    <img className="w-[40px] max-[600px]:hidden" src="/images/logo.webp"></img>
                     <div className="space-y-[-5px] flex items-baseline">
                         <p className=" font-[pmedium] text-[20px] max-[600px]:text-[16px]">OUTWIT</p>
                         <p className=" font-[pbold] text-[20px] max-[600px]:text-[16px]">TRADER</p>
