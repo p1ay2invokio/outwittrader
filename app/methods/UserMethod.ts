@@ -52,7 +52,7 @@ export class UserMethod {
                 }
             }).then((res) => {
                 resolve(res.data)
-            }).catch((err)=>{
+            }).catch((err) => {
                 localStorage.removeItem("token")
                 window.location.href = "/landingpage"
             })
@@ -100,20 +100,32 @@ export class UserMethod {
         })
     }
 
-    public updateDays = (days: number, user_id: number): Promise<{ success: boolean }> => {
+    public updateDays = (days: number, user_id: number, kind: string): Promise<{ success: boolean }> => {
         return new Promise((resolve) => {
             axios.patch(`${END_POINT}/update_days`, {
                 days: days,
-                user_id: user_id
+                user_id: user_id,
+                kind: kind
             }).then((res) => {
                 resolve(res.data)
             })
         })
     }
 
-    public getDashboard=():Promise<number>=>{
-        return new Promise((resolve)=>{
-            axios.get(`${END_POINT}/dashboard`).then((res)=>{
+    public updateDaysAllUsers = (days: number, kind: string) => {
+        return new Promise((resolve) => {
+            axios.patch(`${END_POINT}/update_days_all_users`, {
+                days: days,
+                kind: kind
+            }).then((res) => {
+                resolve(res.data)
+            })
+        })
+    }
+
+    public getDashboard = (): Promise<number> => {
+        return new Promise((resolve) => {
+            axios.get(`${END_POINT}/dashboard`).then((res) => {
                 resolve(res.data)
             })
         })

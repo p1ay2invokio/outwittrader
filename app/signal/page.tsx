@@ -61,7 +61,7 @@ const Signal = () => {
                         <p className="text-center font-[pbold] text-[22px] mb-5">Binary Option</p>
 
 
-                        <div className="grid grid-cols-4 bg-gray-100 p-2 border-[1px] shadow rounded-xl border-gray-300 place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 gap-y-5 mb-[70px] gap-[20px] max-[380px]:grid-cols-1">
+                        <div className="grid grid-cols-4 bg-gray-100 p-2 border-[1px] shadow rounded-xl border-gray-300 place-items-center max-[1400px]:grid-cols-3 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 max-[450px]:grid-cols-1 gap-y-5 mb-[70px] gap-[20px]">
                             <div className="w-full flex flex-col items-center">
                                 <p className="font-[light] text-[14px]">สัญญาณเทรด 1 นาที</p>
                                 <div className="w-full h-[200px] shadow-lg rounded-[8px]">
@@ -178,7 +178,7 @@ const Signal = () => {
 
                             <p className="font-[pbold] text-[22px] mb-5">Forex</p>
 
-                            <div className="grid grid-cols-4 gap-4 w-full shadow bg-gray-100 p-2 border-[1px] rounded-xl border-gray-300">
+                            <div className="grid grid-cols-4 gap-4 w-full shadow bg-gray-100 p-2 border-[1px] rounded-xl border-gray-300 max-[450px]:grid-cols-1">
                                 <div className="w-full flex flex-col items-center">
                                     <p className="font-[light] text-[14px]">เช็คสถิติสัญญาณ Forex</p>
                                     <div className="w-full h-[200px] shadow-lg rounded-[8px]">

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OutwitTrader",
+  title: "OutwitTrader | Signal",
   description: "ผู้ให้บริการปล่อยเช่าสัญญาณ",
   icons: {
     icon: '/outwit.png'

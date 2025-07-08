@@ -113,17 +113,21 @@ const Dashboard = () => {
                             }} className="font-[light] text-[12px] p-[5px] border-[1px] rounded-[8px]">Copy</button>
                         </div>
 
-                        <p className="font-[medium] text-[14px]">ลิงค์เว็บไซต์สำหรับการลงทะเบียน(โบรกเกอร์)</p>
+                        {/* <p className="font-[medium] text-[14px]">ลิงค์เว็บไซต์สำหรับการลงทะเบียน(โบรกเกอร์)</p>
                         <div className="flex gap-[5px] items-center">
                             <p className="font-[light] text-[14px] text-black">{account[0].broker_link}</p>
                             <button onClick={() => {
                                 navigator.clipboard.writeText(`${account[0].broker_link}`);
                             }} className="font-[light] text-[12px] p-[5px] border-[1px] rounded-[8px]">Copy</button>
-                        </div>
+                        </div> */}
 
                     </div> : null}
 
-                    <div className="border shadow-sm rounded-[4px] w-full h-full p-[10px]">
+                    <div className="border shadow-sm rounded-[4px] w-full h-full p-[10px] flex justify-center items-center">
+                        <p className="font-[light]">อยู่ในระหว่างการพัฒนา...</p>
+                    </div>
+
+                    {/* <div className="border shadow-sm rounded-[4px] w-full h-full p-[10px]">
                         <p className="font-[medium] text-[14px] mb-[10px]">โบรกเกอร์</p>
                         <div className="flex gap-[10px]">
                             <p className="font-[light] text-[14px]">ชื่อทีมของคุณ: </p>
@@ -134,7 +138,7 @@ const Dashboard = () => {
                             <input className="border-b-[2px] outline-none font-[light] text-[14px]" placeholder="กรอกเลข"></input>
                             <button className="font-[light] text-[14px]">ส่งข้อมูล</button>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="border shadow-sm rounded-[4px] w-full h-full col-span-2 p-[10px] overflow-scroll max-[768px]:col-span-1">
                         <table className="w-full">
@@ -164,12 +168,12 @@ const Dashboard = () => {
                                         </tr>
                                     )
                                 }) : <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td className="font-[light] text-[14px] pt-[20px]">ไม่พบพาร์ทเนอร์สั่งซื้อ</td>
-                                        <td></td>
-                                        <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td className="font-[light] text-[14px] pt-[20px]">ไม่พบพาร์ทเนอร์สั่งซื้อ</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>}
                             </tbody>
                         </table>

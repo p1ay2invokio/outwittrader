@@ -34,10 +34,10 @@ const Partner = () => {
     }, [])
 
     return (
-        <div className="pt-[100px] pl-[300px] pr-[50px]">
+        <div className="pt-[100px] pl-[300px] pr-[50px] max-[768px]:pl-[10px]">
             <Header />
             <LeftSide />
-            <div className="border-[1px] border-transparent w-full h-[calc(90vh-100px)] p-[20px] grid grid-cols-2 place-items-center">
+            <div className="border-[1px] border-transparent w-full h-[calc(90vh-100px)] p-[20px] grid grid-cols-2 place-items-center max-[768px]:grid-cols-1">
                 <div className="col-span-1">
                     <div className="font-[medium] text-[24px]">
                         <p>ยกระดับการเพิ่มรายได้ของคุณ</p>
@@ -63,7 +63,7 @@ const Partner = () => {
                     }
                 </div>
                 <div className="border-[1px] border-transparent w-[80%] h-[400px] rounded-[20px] col-span-1">
-                    <img className="w-full h-full object-cover rounded-[20px]" src="/team.webp"></img>
+                    <img className="w-full h-full object-cover rounded-[20px] max-[768px]:hidden" src="/team.webp"></img>
                     {/* <p>YT</p> */}
                 </div>
             </div>

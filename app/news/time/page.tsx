@@ -31,7 +31,7 @@ const Time = () => {
 
 
     return (
-        <div className="p-[20px] pl-[220px]">
+        <div className="p-[20px] pl-[220px] max-[450px]:pl-0 max-[450px]:p-[0px]">
 
             <Header />
 
@@ -64,7 +64,7 @@ const Time = () => {
                 <p className='font-[medium] text-white'>กลับ</p>
             </div> */}
             {/* <p className="font-[light]">หน้าหลัก / ห้องสัญญาณ / ช่วงเวลา</p> */}
-            {code ? <iframe className="w-full h-[80vh] mt-[80px] timezone" allow="autoplay; fullscreen" src={`https://en.tradertimerzone.com/fancy.php?sys=${code}`}></iframe> : <p>กำลังโหลด...</p>}
+            {code ? <iframe className="w-full max-[450px]:w-[390px] h-[80vh] mt-[80px] timezone" allow="autoplay; fullscreen" src={`https://en.tradertimerzone.com/fancy.php?sys=${code}`}></iframe> : <p>กำลังโหลด...</p>}
         </div>
     )
 }

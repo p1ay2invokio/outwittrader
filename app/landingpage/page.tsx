@@ -129,13 +129,13 @@ const LandingPage = () => {
 
                     <div className="relative ">
 
-                        {/* <motion.img className="absolute w-[110px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1 } }} src="japan.webp"></motion.img>
+                        <motion.img className="absolute w-[110px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1 } }} src="japan.webp"></motion.img>
                         <motion.img className="absolute right-0 w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.2 } }} src="us.webp"></motion.img>
                         <motion.img className="absolute bottom-0 w-[100px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.4 } }} src="swe.webp"></motion.img>
                         <motion.img className="absolute top-[200px] left-[-120px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.6 } }} src="star.webp"></motion.img>
                         <motion.img className="absolute top-[400px] right-[-40px] w-[60px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 1.8 } }} src="tesla.webp"></motion.img>
                         <motion.img className="absolute top-[400px] left-[-100px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.0 } }} src="apple.webp"></motion.img>
-                        <motion.img className="absolute top-[600px] right-[0px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.2 } }} src="nvidia.webp"></motion.img> */}
+                        <motion.img className="absolute top-[600px] right-[0px] w-[70px]" initial={{ opacity: 0 }} animate={{ y: [0, -10, -10, 0, 0], x: [0, 10, 0, -10, 0], opacity: 1 }} transition={{ x: { repeat: Infinity, duration: 15 }, y: { repeat: Infinity, duration: 15 }, opacity: { delay: 2.2 } }} src="nvidia.webp"></motion.img>
 
 
 

@@ -9,6 +9,7 @@ import { Token } from "../Interfaces/TokenInterface"
 import { FaCreditCard, FaHamburger } from "react-icons/fa";
 import { UserMethod } from "../methods/UserMethod"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { IoAdd } from "react-icons/io5"
 
 interface UserInterface {
     id: number,
@@ -23,7 +24,7 @@ const Header = () => {
     let navigate = useRouter()
 
     let [menuOpen, setMenuOpen] = useState<boolean>(false)
-    // let [user, setUser] = useState<UserInterface[] | null>([])
+    let [user, setUser] = useState<any>(null)
     let [token, setToken] = useState<string | null>('')
 
     let [loadapi, setLoadAPI] = useState<boolean>(true)
@@ -32,7 +33,12 @@ const Header = () => {
 
 
     const initial = async () => {
-        const token = localStorage.getItem("token")
+        const token: any = localStorage.getItem("token")
+
+        if (token) {
+            const user: any = jwtDecode(token)
+            setUser(user)
+        }
 
         setToken(token)
         setLoadAPI(false)
@@ -50,53 +56,59 @@ const Header = () => {
     return (
         <div>
 
-            {menu ? <div className="w-full h-[100vh] bg-black/80 fixed top-[60px] left-0 z-[1]">
+            {menu ? <div className="w-[250px] border-[1px] border-t-0 bg-white/90 shadow border-gray-300 fixed top-[60px] right-0 rounded-b-xl z-[1]">
                 <div onClick={() => {
                     navigate.push("/")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">ภาพรวม</p>
+                    <p className="text-black font-[medium]">ภาพรวม</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/rental")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">เช่าสัญญาณ</p>
+                    <p className="text-black font-[medium]">เช่าสัญญาณ</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/signal")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">ห้องสัญญาณ</p>
+                    <p className="text-black font-[medium]">ห้องสัญญาณ</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/news/forex")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
                     {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
-                    <p className="text-white font-[medium]">-</p>
-                    <p className="text-white font-[medium] text-[12px]">ข่าวประจำวัน forexfactory</p>
+                    <p className="text-black font-[medium]">-</p>
+                    <p className="text-black font-[medium] text-[12px]">ข่าวประจำวัน forexfactory</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/news/time")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
                     {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
-                    <p className="text-white font-[medium]">-</p>
-                    <p className="text-white font-[medium] text-[12px]">ข่าวประจำวัน tradertimezone</p>
+                    <p className="text-black font-[medium]">-</p>
+                    <p className="text-black font-[medium] text-[12px]">ข่าวประจำวัน tradertimezone</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/partner")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
                     {/* <HiMiniComputerDesktop size={20} className="text-white"></HiMiniComputerDesktop> */}
-                    <p className="text-white font-[medium]">-</p>
-                    <p className="text-white font-[medium] text-[12px]">Partner</p>
+                    <p className="text-black font-[medium]">-</p>
+                    <p className="text-black font-[medium] text-[12px]">Partner</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/learning/guidebook")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">คู่มือ</p>
+                    <p className="text-black font-[medium]">คู่มือ</p>
                 </div>
                 <div onClick={() => {
                     navigate.push("/setting")
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">ตั้งค่า</p>
+                    <p className="text-black font-[medium]">ตั้งค่า</p>
                 </div>
+
+                {user ? user.role == 2 ? <div onClick={() => {
+                    navigate.push("/admin/dashboard")
+                }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
+                    <p className="text-black font-[medium]">แอดมิน</p>
+                </div> : null : null}
 
                 <div onClick={() => {
                     Swal.fire({ title: "ต้องการออกจากระบบ", showConfirmButton: true, showCancelButton: true, confirmButtonText: 'ออก', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#cb4335', cancelButtonColor: '#e67e22' }).then((res) => {
@@ -109,7 +121,7 @@ const Header = () => {
                         }
                     })
                 }} className="flex w-full h-[40px] justify-start items-center p-[20px] cursor-pointer gap-[10px]">
-                    <p className="text-white font-[medium]">ออกจากระบบ</p>
+                    <p className="text-black font-[medium]">ออกจากระบบ</p>
                 </div>
             </div> : null}
 

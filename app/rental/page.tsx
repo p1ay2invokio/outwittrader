@@ -90,7 +90,7 @@ const RentSignal = () => {
             }} className="w-[100px] h-[35px] shadow-lg bg-orange-600 rounded-[4px] text-white mt-[10px] font-[medium]">ยกเลิก</button>
           </div>
         </div> : <div className="w-[500px] h-[650px] border-[1px] border-gray-400 bg-white shadow rounded-[8px] p-[20px] flex justify-center items-center flex-col max-[600px]:w-[350px]">
-          <img src={specificProduct?.img} className='w-[250px] rounded-[8px] shadowf-lg mb-[5px]'></img>
+          <img loading='lazy' src={specificProduct?.img} className='w-[250px] rounded-[8px] shadowf-lg mb-[5px]'></img>
           <hr className='border-[1px] w-full border-black/20 mb-[20px] mt-[20px]' />
           {specificProduct ? <div className='w-full flex justify-center flex-col items-center text-[14px]'>
             <p className='font-[medium]'>{specificProduct.name} ( {specificProduct.type == "B" ? "Binary Option" : specificProduct.type == "F" ? "Forex" : "Binary Option & Forex"} )</p>
@@ -145,7 +145,7 @@ const RentSignal = () => {
 
 
 
-      <div className="w-full bg-white mt-[150px] flex  items-center flex-col">
+      <div className="w-full mt-[150px] flex  items-center flex-col">
         {/* <Back /> */}
         {/* <p className="text-white font-[medium] text-[24px]">ยินดีต้อนรับ! สู่ OutwitTrader</p> */}
 
@@ -212,7 +212,7 @@ const RentSignal = () => {
               {/* <td>ผู้สั่งซื้อ</td> */}
               <td>สินค้า</td>
               <td>วันที่สั่งซื้อ</td>
-              <td>วันหมดอายุ</td>
+              {/* <td>วันหมดอายุ</td> */}
               <td className='max-lg:hidden'>สลิป</td>
               <td>สถานะ</td>
 
@@ -222,7 +222,7 @@ const RentSignal = () => {
             {orders && orders.length > 0 ? orders.map((item) => {
               let status = Number(item.status)
               return (
-                <tr key={item.id}>
+                <tr className='font-[medium]' key={item.id}>
                   <td>{item.id}</td>
                   {/* <td>{item.username}</td> */}
                   <td>{item.product_name}</td>
@@ -231,13 +231,13 @@ const RentSignal = () => {
                     {/* <p className='text-[10px]'>{dayjs(Number(item.timestamp)).fromNow()}</p> */}
 
                   </td>
-                  <td>
-                    <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).add(30, 'day').format('DD/MM/YYYY')}</p>
+                  {/* <td> */}
+                    {/* <p className='text-[14px] max-lg:text-[12px]'>{dayjs(Number(item.timestamp)).add(30, 'day').format('DD/MM/YYYY')}</p> */}
                     {/* <p className='text-[12px]'>{dayjs(Number(item.timestamp)).format('DD/MM/YYYY')}</p> */}
-                  </td>
+                  {/* </td> */}
                   <td className='max-lg:hidden'><a href={`${END_SLIP}/${item.slip}`} className='text-[12px] text-blue-500'>{item.slip}</a></td>
                   <td className='flex justify-center items-center'>
-                    <p className={`text-[12px] w-[110px] h-[30px] flex justify-center max-lg:text-[12px] items-center ${status == 0 ? 'bg-orange-500' : status == 1 ? 'bg-green-700' : status == 2 ? 'bg-black' : null} rounded-[4px] text-white font-[light]`}>{status == 0 ? 'ตรวจสอบ 1~2 นาที' : status == 1 ? 'สั่งซื้อสำเร็จ' : status == 2 ? 'สลิปไม่ถูกต้อง' : null}</p>
+                    <p className={`text-[12px] font-[medium] text-transparent w-[110px] h-[30px] flex justify-center max-lg:text-[12px] items-center bg-clip-text ${status == 0 ? 'bg-orange-500' : status == 1 ? 'bg-green-700' : status == 2 ? 'bg-black' : null} rounded-[4px] text-white font-[light]`}>{status == 0 ? 'ตรวจสอบ 1~2 นาที' : status == 1 ? 'สั่งซื้อสำเร็จ' : status == 2 ? 'สลิปไม่ถูกต้อง' : null}</p>
                   </td>
                 </tr>
               )

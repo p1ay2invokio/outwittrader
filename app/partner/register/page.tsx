@@ -111,39 +111,39 @@ const Register = () => {
                 </div>
             </div> : null}
 
-            <div className="pl-[300px] pt-[100px] pr-[50px]">
+            <div className="pl-[300px] pt-[100px] pr-[50px] max-[768px]:pl-[10px] max-[768px]:pt-[260px]">
                 <div className="w-full h-[calc(100vh)] border-[1px] border-transparent p-[10px] flex justify-center items-center">
                     <div className="w-[600px] h-[800px] flex justify-center flex-col border-[1px] border-transparent p-[20px]">
-                        <div className="w-full grid grid-cols-2 gap-[20px] items-end font-[light] text-[14px]">
+                        <div className="w-full grid grid-cols-2 max-[768px]:grid-cols-1 gap-[20px] items-end font-[light] text-[14px]">
                             <div className="flex flex-col">
                                 <label>ชื่อ</label>
-                                <input required value={name} onChange={(e) => {
+                                <input required onChange={(e) => {
                                     setName(e.target.value)
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                             <div className="flex flex-col">
                                 <label>นามสกุล</label>
-                                <input required value={surname} onChange={(e) => {
+                                <input required onChange={(e) => {
                                     setSurname(e.target.value)
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
 
                             <div className="flex flex-col">
                                 <label>เลขบัตรประชาชน 13 หลัก</label>
-                                <input required value={thai_id} onChange={(e) => {
+                                <input maxLength={13} required onChange={(e) => {
                                     setThai_id(e.target.value)
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                             <div className="w-full grid grid-cols-2 gap-[12px]">
                                 <div className="flex flex-col justify-between">
                                     <label>อายุ</label>
-                                    <input required value={age} onChange={(e) => {
+                                    <input maxLength={2} required onChange={(e) => {
                                         setAge(e.target.value)
                                     }} className="border-b-[1px] outline-none p-[5px]"></input>
                                 </div>
                                 <div className="flex flex-col">
                                     <label>เพศ</label>
-                                    <select required value={gender} onChange={(e) => {
+                                    <select required onChange={(e) => {
                                         setGender(e.target.value)
                                     }} name="gender">
                                         <option value={"empty"} id="empty">ระบุเพศ</option>
@@ -159,14 +159,14 @@ const Register = () => {
 
                             <div className="flex flex-col">
                                 <label>ว/ด/ป เกิด</label>
-                                <input required value={bod} onChange={(e) => {
+                                <input required onChange={(e) => {
                                     setBod(e.target.value)
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                             <div className="w-full grid grid-cols-2 gap-[12px]">
                                 <div className="flex flex-col">
                                     <label>อาชีพ</label>
-                                    <select value={job} onChange={(e) => {
+                                    <select onChange={(e) => {
                                         setJob(e.target.value)
                                     }} name="gender">
                                         <option value={"empty"} id="empty">เลือกอาชีพ</option>
@@ -178,7 +178,7 @@ const Register = () => {
                                 </div>
                                 <div className="flex flex-col justify-between">
                                     <label>รายได้/ปี</label>
-                                    <input required value={salary} onChange={(e) => {
+                                    <input type="number" required onChange={(e) => {
                                         setSalary(e.target.value)
                                     }} className="border-b-[1px] outline-none p-[5px]"></input>
                                 </div>
@@ -186,13 +186,13 @@ const Register = () => {
 
                             <div className="flex flex-col">
                                 <label>เลขบัญชีธนาคาร</label>
-                                <input required value={bank_account} onChange={(e) => {
+                                <input required onChange={(e) => {
                                     setBankAccount(e.target.value)
                                 }} className="border-b-[1px] outline-none p-[5px]"></input>
                             </div>
                             <div className="flex flex-col">
                                 <label>ธนาคาร</label>
-                                <select required value={bank_name} onChange={(e) => {
+                                <select required onChange={(e) => {
                                     setBankName(e.target.value)
                                 }} name="gender">
                                     <option value={"empty"} id="empty">เลือกธนาคาร</option>

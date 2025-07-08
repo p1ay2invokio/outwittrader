@@ -49,7 +49,7 @@ const LeftSide = () => {
 
                     <div className="flex flex-col justify-start mt-[30px] mb-[10px] items-start w-full pl-[20px] text-white font-[light] text-[12px]">
                         <p className="font-[pmedium] text-[14px]">ID : {User?.id}</p>
-                        <p className="font-[plight] text-[14px]">{User?.email}</p>
+                        <p className="font-[plight] text-[14px] w-full text-ellipsis overflow-hidden">{User?.email}</p>
                         <p className="font-[plight] text-[14px]">Binary Days : {User?.binary_days}</p>
                         <p className="font-[plight] text-[14px]">Forex Days : {User?.forex_days}</p>
 

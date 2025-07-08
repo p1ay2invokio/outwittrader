@@ -51,7 +51,7 @@ const Home = () => {
 
         <div className="w-full h-[100vh] pl-[250px] pr-[50px] gap-[10px] pt-[100px] flex mb-[300px] max-[768px]:pl-[30px]">
           <div className="grid-cols-3 grid gap-[10px] w-full cols-span-2 max-[1024px]:grid-cols-1">
-            <div className="w-full border-[1px] rounded-[8px] h-[250px] shadow col-span-2">
+            <div className="w-full border-[1px] rounded-[8px] h-[350px] max-[1600px]:h-[300px] max-[1300px]:h-[250px] max-[650px]:h-[200px] max-[500px]:h-[150px] max-[400px]:h-[100px] shadow col-span-2">
               {/* <p>Test1</p> */}
               <Carousel slide={true} slideInterval={3000} className="w-full h-full z-[0]">
                 <img className="w-full h-full" src="/slide1.png"></img>
@@ -60,7 +60,7 @@ const Home = () => {
               </Carousel>
             </div>
 
-            <div className="w-full col-span-1 border-[1px] h-[250px] rounded-[8px] shadow-md">
+            <div className="w-full col-span-1 border-[1px] h-[350px] max-[1600px]:h-[300px] max-[1300px]:h-[250px] max-[650px]:h-[200px] rounded-[8px] shadow-md">
               <iframe className="w-full h-full rounded-[8px]" src="https://www.youtube.com/embed/dd1jDsX0VbI?si=AJw70oHooDvRDlUg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </div>
 
